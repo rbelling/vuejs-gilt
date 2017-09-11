@@ -1,0 +1,21 @@
+{
+  "name": "training-js-es2015",
+  "version": "1.0.0",
+  "description": "Training materials for ES2015",
+  "scripts": {
+    "test": "./node_modules/.bin/yaspeller ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MunGell/es2015.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MunGell/es2015/issues"
+  },
+  "homepage": "https://github.com/MunGell/es2015#readme",
+  "dependencies": {
+    "yaspeller": "^2.7.0"
+  }
+}

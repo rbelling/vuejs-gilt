@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <title>ES2015 Intro</title>
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+            @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+            body {
+                font-family: 'Droid Serif', Arial, sans-serif;
+            }
+            .remark-code, .remark-inline-code {
+                font-family: 'Ubuntu Mono', monospace;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="remark-latest.min.js"></script>
+        <script>
+            var hljs = remark.highlighter.engine;
+        </script>
+        <script>
+            var slideshow = remark.create({
+                sourceUrl: 'present.md',
+                highlightStyle: 'monokai',
+                highlightLanguage: 'javascript',
+                highlightLines: true
+            }) ;
+        </script>
+    </body>
+</html>
