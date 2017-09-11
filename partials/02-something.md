@@ -1,1 +1,1 @@
-I'm partials/02-something.md
+#something there

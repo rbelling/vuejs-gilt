@@ -1,6 +1,6 @@
 # Materials for Vue.js presentation at Gilt Architecture Council - Fall 2017
 
-Please go to wiki to read the materials: [Presentation](https://rbelling.github.io/vuejs-gilt)
+Please go to the GitHub page for the final [Presentation](https://rbelling.github.io/vuejs-gilt)
 
 ## Getting Started
 The final presentation is generated from `docs/presentation.md`.  
