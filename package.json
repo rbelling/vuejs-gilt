@@ -3,6 +3,17 @@
   "version": "1.0.0",
   "description": "Materials for Vue.js presentation at Gilt Architecture Council - Fall 2017",
   "scripts": {
+    "________________________________________________________________________1": "Help",
+    "help": "npm run help:sync; npm run help:commit; npm run help:test",
+    "help:sync": "echo \"npm run sync - to pull and push commits\"",
+    "help:commit": "echo \"npm run commit - to add and commit all changes\"",
+    "help:test": "echo \"npm test - to run spell check\"",
+    "________________________________________________________________________2": "Git workflow",
+    "setup": "git remote add wiki https://github.com/rbelling/vuejs-gilt.wiki.git",
+    "sync": "git pull wiki master; git push wiki master; git pull origin master; git push origin master",
+    "commit": "git add .; git commit -m \"Commit from local\"",
+    "pub": "git subtree push --prefix presentation origin gh-pages",
+    "________________________________________________________________________3": "Tests",
     "test": "./node_modules/.bin/yaspeller ."
   },
   "repository": {
