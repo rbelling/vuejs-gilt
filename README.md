@@ -2,6 +2,10 @@
 
 Please go to wiki to read the materials: [Presentation](https://rbelling.github.io/vuejs-gilt)
 
-## Getting started
+## Getting Started
+The final presentation is generated from `docs/presentation.md`.  
 
-`npm run help` will print a list of the available commands to get started.
+This file is not supposed to be edited manually: you can generate it by running `npm run concat`, which is also automatically launched when committing something.
+
+#### Partials concatenation
+All the partials in `partials/*` will be included in the final output. The order is alphabetic.

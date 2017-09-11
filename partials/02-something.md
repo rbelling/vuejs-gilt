@@ -1,2 +1,1 @@
-I'm partials/01-dummy.md
 I'm partials/02-something.md
