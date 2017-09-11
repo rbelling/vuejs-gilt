@@ -15,7 +15,7 @@ commit:
 	@git commit -m "Update from Local"
 
 setup:
-	@git remote add wiki https://github.com/MunGell/es2015.wiki.git
+	@git remote add wiki https://github.com/rbelling/es2015.wiki.git
 
 publish:
 	git subtree push --prefix presentation origin gh-pages

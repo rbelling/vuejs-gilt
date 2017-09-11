@@ -7,14 +7,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MunGell/es2015.git"
+    "url": "git+https://github.com/rbelling/es2015.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MunGell/es2015/issues"
+    "url": "https://github.com/rbelling/es2015/issues"
   },
-  "homepage": "https://github.com/MunGell/es2015#readme",
+  "homepage": "https://github.com/rbelling/es2015#readme",
   "dependencies": {
     "yaspeller": "^2.7.0"
   }
