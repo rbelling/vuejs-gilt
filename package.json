@@ -1,20 +1,26 @@
 {
-  "name": "training-js-es2015",
+  "name": "vuejs-gilt",
   "version": "1.0.0",
-  "description": "Training materials for ES2015",
+  "description": "Materials for Vue.js presentation at Gilt Architecture Council - Fall 2017",
   "scripts": {
     "test": "./node_modules/.bin/yaspeller ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rbelling/es2015.git"
+    "url": "git+https://github.com/rbelling/vuejs-gilt.git"
   },
+  "contributors": [
+    {
+      "name": "Riccardo Bellingeri",
+      "email": "riccardo.bellingeri@gmail.com"
+    }
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rbelling/es2015/issues"
+    "url": "https://github.com/rbelling/vuejs-gilt/issues"
   },
-  "homepage": "https://github.com/rbelling/es2015#readme",
+  "homepage": "https://github.com/rbelling/vuejs-gilt#readme",
   "dependencies": {
     "yaspeller": "^2.7.0"
   }
