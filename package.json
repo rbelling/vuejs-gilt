@@ -7,7 +7,7 @@
     "help:test": "echo \"npm test - runs spell checker\"",
     "________________________________________________________________________2": "Workflow",
     "precommit": "npm run concat",
-    "concat": "concat-cli -f     partials/*     -o docs/presentation.md",
+    "concat": "concat-cli -f     partials/*     -o docs/presentation.md; git add docs/presentation.md",
     "test": "./node_modules/.bin/yaspeller ."
   },
   "repository": {
