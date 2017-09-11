@@ -5,7 +5,9 @@
   "scripts": {
     "________________________________________________________________________1": "Help",
     "help:test": "echo \"npm test - runs spell checker\"",
-    "________________________________________________________________________2": "Tests",
+    "________________________________________________________________________2": "Workflow",
+    "precommit": "npm run concat",
+    "concat": "concat-cli -f     Dummy-page.md sumtin.md     -o docs/presentation.md",
     "test": "./node_modules/.bin/yaspeller ."
   },
   "repository": {
@@ -30,5 +32,9 @@
   "homepage": "https://rbelling.github.io/vuejs-gilt",
   "dependencies": {
     "yaspeller": "^2.7.0"
+  },
+  "devDependencies": {
+    "concat-cli": "^4.0.0",
+    "husky": "^0.14.3"
   }
 }
