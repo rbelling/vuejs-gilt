@@ -6,11 +6,11 @@ const execa = require('execa')
 gulp.task('browser-sync', () => {
   browserSync.init({
     server: {
-      baseDir: "./docs"
+      baseDir: './docs'
     }
   })
 
-  gulp.watch("partials/*.md").on('change', () => {
+  gulp.watch('partials/*.md').on('change', () => {
     execa.shell('npm run concat').then(browserSync.reload)
   });
 })
