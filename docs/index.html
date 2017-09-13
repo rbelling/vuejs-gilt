@@ -17,11 +17,9 @@
         </style>
     </head>
     <body>
-        <script src="remark-latest.min.js"></script>
-        <script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js" defer></script>
+        <script defer>
             var hljs = remark.highlighter.engine;
-        </script>
-        <script>
             var slideshow = remark.create({
                 sourceUrl: 'presentation.md',
                 highlightStyle: 'monokai',
