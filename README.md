@@ -5,7 +5,8 @@ Please go to the GitHub page for the final [Presentation](https://rbelling.githu
 ## Getting Started
 The final presentation is generated from `docs/presentation.md`.  
 
-This file is not supposed to be edited manually: you can generate it by running `npm run concat`, which is also automatically launched when committing something.
+This file is not supposed to be edited manually: 
+you can generate it by running `npm run dev`, which opens a browser tab with the result.
 
 #### Partials concatenation
 All the partials in `partials/*` will be included in the final output. The order is alphabetic.

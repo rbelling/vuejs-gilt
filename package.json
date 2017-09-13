@@ -6,9 +6,9 @@
     "________________________________________________________________________1": "Help",
     "help:test": "echo \"npm test - runs spell checker\"",
     "________________________________________________________________________2": "Workflow",
+    "dev": "npm run concat; gulp",
     "precommit": "npm run concat",
     "concat": "concat-cli -f     partials/*     -o docs/presentation.md; git add docs/presentation.md",
-    "rebuild-pages": "git commit -m \"rebuild pages\" --allow-empty; git push",
     "test": "./node_modules/.bin/yaspeller ."
   },
   "repository": {
@@ -32,10 +32,13 @@
   },
   "homepage": "https://rbelling.github.io/vuejs-gilt",
   "dependencies": {
+    "execa": "^0.8.0",
     "yaspeller": "^2.7.0"
   },
   "devDependencies": {
+    "browser-sync": "^2.18.13",
     "concat-cli": "^4.0.0",
+    "gulp": "^3.9.1",
     "husky": "^0.14.3"
   }
 }
