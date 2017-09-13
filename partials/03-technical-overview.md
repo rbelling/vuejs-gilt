@@ -6,3 +6,5 @@ Here we should provide a more in-depth overview of Vue features, e.g.:
 - Directives
 - Reactivity model (data, computed, watchers)
 - Single File Components
+
+---
