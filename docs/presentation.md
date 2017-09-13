@@ -1,4 +1,4 @@
-#Intro
+# Intro
 
 This should be a tldr of the presentation, very high level
 
@@ -6,7 +6,7 @@ This should be a tldr of the presentation, very high level
 - Very high level comparison with angular and react.
 - What does Vue shine on? Cons: it lacks something like React Native
 
-#Vue.js at Gilt
+# Vue.js at Gilt
 
 Examples of real problems solved by Vue in Gilt
 
@@ -20,15 +20,15 @@ Here we should provide a more in-depth overview of Vue features, e.g.:
 - Directives
 - Reactivity model (data, computed, watchers)
 - Single File Components
-#Vue.js community
+# Vue.js community
 
 Well supported, very few open issues. Ease of migrating to newer versions
 
-#Market adoption
+# Market adoption
 Big players that use vue (alibaba ecc)
 
-#What's next
+# What's next
 
-#Interesting use cases
+# Interesting use cases
 At gilt, maybe recreate the Admin tool?
 Also, a marketplace like Wordpress would work

@@ -1,4 +1,4 @@
-#Vue.js at Gilt
+# Vue.js at Gilt
 
 Examples of real problems solved by Vue in Gilt
 

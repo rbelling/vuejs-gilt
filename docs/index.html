@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="keywords" content="">
-        <meta name="description" content="">
-        <title>Vue.js @ Gilt.tech</title>
-        <style>
-            @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
-            @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-            body {
-                font-family: 'Droid Serif', Arial, sans-serif;
-            }
-            .remark-code, .remark-inline-code {
-                font-family: 'Ubuntu Mono', monospace;
-            }
-        </style>
-    </head>
-    <body>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js" defer></script>
-        <script defer>
-            var hljs = remark.highlighter.engine;
-            var slideshow = remark.create({
-                sourceUrl: 'presentation.md',
-                highlightStyle: 'monokai',
-                highlightLanguage: 'javascript',
-                highlightLines: true
-            }) ;
-        </script>
-    </body>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <title>Vue.js @ Gilt.tech</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+    body {
+      font-family: 'Droid Serif', Arial, sans-serif;
+    }
+
+    .remark-code, .remark-inline-code {
+      font-family: 'Ubuntu Mono', monospace;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"></script>
+</head>
+<body>
+<script>
+  remark.create({
+    sourceUrl: 'presentation.md',
+    highlightStyle: 'monokai',
+    highlightLanguage: 'javascript',
+    highlightLines: true
+  });
+</script>
+</body>
 </html>
