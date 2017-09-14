@@ -1,12 +1,32 @@
-[//]: # (
 Here we should provide a more in-depth overview of Vue features, e.g.:
-[x] Progressive Framework
-[x] virtual dom
-[ ] Directives
-[ ] Reactivity model: data, computed, watchers
-[ ] Single File Components
-)
+- [x] Hello World
+- [x] Progressive Framework
+- [x] virtual dom
+- [x] Directives
+- [x] Data, computed properties
+- [ ] Single File Components
 
+##Hello World
+```html
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+  <p>{{ message }}</p>
+</div>
+```
+```javascript
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue.js!'
+  }
+})
+```
+```html
+<!-- Output -->
+Hello Vue.js!
+```
+---   
 ##Progressive Framework  
 It's called progressive because the core of Vue is minimal and extremely modular. 
 You can get the Runtime-only build, or Compiler + Runtime if you need to compile JS templates on the client. 
@@ -28,11 +48,48 @@ Overall this removes the need for a whole class of performance optimizations fro
 Vue's virtual dom is an intermediate representation of the DOM tree, that only exists in memory. Whenever there's a change to one of the properties Vue maintains a buffer of diffs, that are then de-duped, transformed into a patch, and applied to the real DOM (so-called Reconciliation)
 
 ##Directives
-Vue offers various directives, admittedly inspired by Angular.
-A directive is a special attribute that you can add to a template. Some examples are `v-for`, `v-on`, `v-once`
+Vue offers various directives, admittedly heavily inspired by Angular world.
+A directive is a special attribute that you can add to a template. Some examples are `v-for`, `v-on (@eventName)`, `v-if`, 
 
 Directives make it really straight forward to add event listeners
 
+@Todo: example of event listeners with modifier, v-for, v-if
+
+---
+##Reactivity
+The state of a Vue component is stored into a `data` property, which is similar to `getInitialState` in React. 
+
+```html
+<div id="app">
+  <span>Clicked {{howMany}} times</span>
+  <button @click="howMany++">Increment</button>
+  <div>{{divisibility}}</div>
+</div>
+```
+```javascript
+new Vue({
+  el: '#app',
+  data: {
+    // Initial value
+    howMany: 0
+  },
+  computed: {
+    divisibility() {
+      return (this.howMany % 3 === 0) ? 'Multiple of 3 🤠' : ''
+    }
+  }
+})
+```
+[Output](https://codepen.io/rbelling/pen/QqwPGY)
+
+The `divisibility` property depends on `howMany`, so it will be automatically updated by Vue every time the dependency is modified.
+
+Under the hood, Vue  accomplishes this by reading all of the properties in `data`, and converting them to getter/setters, so that it can introduce a dependency tracking system.
+
+Limitations: Vue cannot detect property addition or deletion so you have to declare every property in the initial data object. However it’s possible to add reactive properties to a nested object using the Vue.set(object, key, value) 
+That, or object spread / assign
+
+In addition to computed properties, Vue supports watchers.
 
 ---
 

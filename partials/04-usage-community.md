@@ -1,7 +1,7 @@
 # Vue.js community
 
 Vue was created by Evan You, a former google employee, who is now working full time on the framework. 
-The community is growing really fast and has been supporting the development of new features, and even if the framework isn't backed by a large corporation, the [number of open issues](https://github.com/issues) on GitHub is really low comparing to other frameworks. 
+The community is growing really fast and has been supporting the development of new features, and even if the framework isn't backed by a large corporation, the [number of open issues][issues] on GitHub is really low comparing to other frameworks. 
 
 # Market adoption
 Big players that use vue (alibaba, optimizely)
@@ -19,8 +19,10 @@ In single file components you can easily edit the css (style block), without dea
 With Vue, designers could easily edit the stylesheets, using their favorite tools (SASS / Less / PostCSS / ..). 
 Also, because styles can be scoped, there's no risk of accidentally modifying other elements in the page.
 
-## Trusted marketplace for Vue component
+## Trusted marketplace for Vue components
 
 The idea of a marketplace for trusted plugins is certainly not new: it would be interesting to see something like Wordpress marketplace, where you could just add a component to your page without worrying about integrating it.
 
 ---
+
+[issues]: https://github.com/vuejs/vue/issues

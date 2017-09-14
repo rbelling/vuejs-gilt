@@ -2,6 +2,16 @@
 
 Please go to the GitHub page for the final [Presentation](https://rbelling.github.io/vuejs-gilt)
 
+###Todo:
+- [ ] Think of a title
+- [x] Put rough agenda together
+- [ ] Get resources for the items in the agenda and write markdown for it
+- [ ] Add examples to slides
+- [ ] Funny images
+- [ ] First slide (intro)
+- [ ] Last slide (questions, contacts)
+- [ ] Style slides
+
 ## Getting Started
 The final presentation is generated from `docs/presentation.md`.  
 
