@@ -2,8 +2,7 @@
 
 Please go to the GitHub page for the final [Presentation](https://rbelling.github.io/vuejs-gilt)
 
-###Todo:
-- [ ] Think of a title
+### Todo:
 - [x] Put rough agenda together
 - [ ] Get resources for the items in the agenda and write markdown for it
 - [ ] Add examples to slides
