@@ -1,4 +1,3 @@
-
 # Easier done than said: Vue.js
 
 ##TL;DR
@@ -40,9 +39,7 @@ The new [Gilt+ CLP][1] can be seen as one main component (`PageComposer`) that r
 
 We needed to allow a team of multiple Front End developers to work in parallel with as limited friction as we could; each component is published to NPM and imported as a dependency in `PageComposer`.
 
-Vue supports Single File components, which let you declare markup, scripts and styles in a single file, similarly to what happens with [`CustomElement`s][2]
-We found that Single File components were great for our use case: very un-opinionated, they work perfectly with our requirement of having a sort of CMS.
-
+Vue supports Single File Components, which is aligned to the spec of WebComponents. We found that those suited our needs perfectly.
 Vue was easy to pick up comparing to other solutions out there, so we'll be able to easily add new developers to the project, maintenance will be easier. 
 
 ---
@@ -56,6 +53,8 @@ Here we should provide a more in-depth overview of Vue features, e.g.:
 - [x] Directives
 - [x] Reactivity
 - [ ] Single File Components
+- [ ] Vuex
+- [ ] SSR
 
 ##Hello World
 ```html
@@ -85,72 +84,102 @@ You can get the Runtime-only build, or Compiler + Runtime if you need to compile
 You could even choose to add Vue merely as a jQuery replacement, (the runtime itself is smaller than jQuery when minified + gzipped).
 If you decide to add more complex features to your app, like the Router, Vuex and so on, you can certainly do so, but by default is much less bloated then other frameworks.
 
-You can have Vue controlling only certain parts of your app, for example when migrating a legacy codebase to Vue.
+You can have Vue controlling only certain parts of your app, which comes in handy when migrating a legacy codebase to Vue.
 This makes it easy to apply the strangler pattern.
 
 ##Virtual Dom
+Vue's virtual dom is an intermediate representation of the DOM tree, that only exists in memory. Whenever there's a change to one of the properties Vue maintains a buffer of diffs, that are then de-duped, transformed into a patch, and applied to the real DOM (so-called Reconciliation)
+
 Vue relies on a really fast virtual dom implementation, which offers similar performances to React (even faster at times).
 
 There are a few key differences that is worth noting. 
-In React when a component's state changes, it triggers the re-render of the entire component sub-tree, starting at that component as root. To avoid unnecessary re-renders of child components, you need to either use PureComponent or implement shouldComponentUpdate whenever you can. You may also need to use immutable data structures to make your state changes more optimization-friendly. However, in certain cases you may not be able to rely on such optimizations because PureComponent/shouldComponentUpdate assumes the entire sub tree’s render output is determined by the props of the current component. If that is not the case, then such optimizations may lead to inconsistent DOM state.
-In Vue, a component’s dependencies are automatically tracked during its render, so the system knows precisely which components actually need to re-render when state changes. Each component can be considered to have shouldComponentUpdate automatically implemented for you, without the nested component caveats.
-Overall this removes the need for a whole class of performance optimizations from the developer’s plate, and allows them to focus more on building the app itself as it scales.
- 
-Vue's virtual dom is an intermediate representation of the DOM tree, that only exists in memory. Whenever there's a change to one of the properties Vue maintains a buffer of diffs, that are then de-duped, transformed into a patch, and applied to the real DOM (so-called Reconciliation)
+In React when a component's state changes, it triggers the re-render of the entire component sub-tree, starting from that component as a root. 
+To avoid unnecessary re-renders of child components, you need to either use [PureComponent](https://facebook.github.io/react/docs/react-api.html#react.purecomponent) or implement `shouldComponentUpdate()` whenever you can. 
+You may also need to use immutable data structures to make your state changes more optimized.
+
+In Vue, a component's dependencies are automatically tracked during its render, so the system knows precisely which components actually need to re-render when state changes. Each component can be considered to have shouldComponentUpdate automatically implemented for you, without the nested component caveats.
+Overall this removes the need for a whole class of performance optimizations from the developer's plate, and allows them to focus more on building the app itself as it scales.
 
 ##Directives
-Vue offers various directives, admittedly heavily inspired by Angular world.
+Vue offers various directives, heavily inspired by the Angular world.
 A directive is a special attribute that you can add to a template. Some examples are `v-for`, `v-on (@eventName)`, `v-if`, 
 
-Directives make it really straight forward to add event listeners
+Directives make it really straight forward to add event listeners. 
 
-@Todo: example of event listeners with modifier, v-for, v-if
-
----
-##Reactivity
-The state of a Vue component is stored into a `data` property, which is similar to `getInitialState` in React. 
-
-```html
-<div id="app">
-  <span>Clicked {{howMany}} times</span>
-  <button @click="howMany++">Increment</button>
-  <div>{{divisibility}}</div>
-</div>
-```
 ```javascript
 new Vue({
-  el: '#app',
+  el: '#example',
   data: {
-    // Initial value
-    howMany: 0
+    result: 0
+  }
+})
+```
+```html
+<div id="example">
+  <span> {{result}} </span>
+  <button @click="result++">Increment result</button>
+</div>
+```
+
+---
+##Reactivity model
+The state of a Vue component is stored into a `data` property, which is similar to `getInitialState()` in React.  
+
+Let's jump straight to an example: we want to display the sum of two numbers `a` and `b`. 
+
+```javascript
+new Vue({
+  el: '#example',
+  data: {
+    a: 1,
+    b: 2
   },
   computed: {
-    divisibility() {
-      return (this.howMany % 3 === 0) ? 'Multiple of 3! 🤠' : 'Not a multiple of 3...'
+    sum() {
+      return this.a + this.b
     }
   }
 })
 ```
+
+```html
+<div id="example">
+  <span> {{a}} + {{b}} = {{sum}} </span>
+</div>
+```
+```html
+<!-- Output -->
+1 + 2 = 3
+```
+This example shows one of the key features of Vue: if one of the two addends is changed, what should we do to re-render the UI? 
+Nothing.
+
+The computed property `sum` depends on `a` and `b`. Whenever either of those is updated, `sum` will be adjusted accordingly. 
+At startup time, Vue converts all the properties of the `data` object (plain JS), and transforms them in getters/setters, making them reactive. 
+When you set `a` or `b` to something else, the rendered HTML updates automatically. 
+
+There's no need to worry about calling `setState()`, or listening to store events, or creating custom observables, or anything else.
 [Output](https://codepen.io/rbelling/pen/QqwPGY)
+
+---  
 
 The `divisibility` property depends on `howMany`, so it will be automatically updated by Vue every time the dependency is modified.
 
 Under the hood, Vue  accomplishes this by reading all of the properties in `data`, and converting them to getter/setters, so that it can introduce a dependency tracking system.
 
-Limitations: Vue cannot detect property addition or deletion so you have to declare every property in the initial data object. However it’s possible to add reactive properties to a nested object using the Vue.set(object, key, value) 
-That, or object spread / assign
-
-In addition to computed properties, Vue supports watchers.
-
-[easy example](http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/#Reactivity)
+###Limitations of `data`
+Vue cannot detect property addition or deletion so you have to declare every property in the initial data object. However it’s possible to add reactive properties to a nested object using the Vue.set(object, key, value) 
+Another alternative is using the [Spread operator](http://redux.js.org/docs/recipes/UsingObjectSpreadOperator.html)
 
 ---
 
 ##Single file components
+Vue takes a React-like approach when it comes to complex interfaces, where everything is a Component. 
+Its approach differs from React, and is very close to [`CustomElement`s](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). 
+In a `SingleFileComponent.vue` you'll have  
+Here's how it looks like.
 
-
-questo
-[parti da qua](http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/#Modularity)
+@TODO add example
 
 # Vue.js community
 

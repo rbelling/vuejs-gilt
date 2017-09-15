@@ -1,6 +1,10 @@
 # Vue.js community
 
-Vue was created by Evan You, a former google employee, who is now working full time on the framework. 
+Vue was created by a former Google Employee, Evan You. It started as a personal project, that was released to the public in 2014, before Angular2 was out, and before React had took off so wildly. 
+After it was discovered by the Laravel community, the project gathered momentum, and is now maintained full time by the creator, supported by a fairly big community (67k stars on GitHub).
+
+It isn't backed by a huge corporation, like React. That being said, it has had 100% test coverage since the early days, very few open issues on GitHub (which are processed very quickly either by the creator or by the community. 
+Newer version rarely come with breaking changes, and when it does there's usually a migration build that guides you through the upgrade. 
 The community is growing really fast and has been supporting the development of new features, and even if the framework isn't backed by a large corporation, the [number of open issues][issues] on GitHub is really low comparing to other frameworks. 
 
 # Market adoption
@@ -26,3 +30,4 @@ The idea of a marketplace for trusted plugins is certainly not new: it would be 
 ---
 
 [issues]: https://github.com/vuejs/vue/issues
+[stability]: http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/#Stability
