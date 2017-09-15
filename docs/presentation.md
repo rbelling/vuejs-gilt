@@ -9,7 +9,7 @@ Its design is inspired by the [MVVM pattern](https://addyosmani.com/resources/es
 Use cases: Vue allows you to create everything from 
 - small widgets that you drop in existing applications
 - medium sized apps where certain parts of the page are controlled with js, re-rendering certain parts of the app dynamically 
-- enterprise apps (SPAs)
+- larger enterprise apps (SPAs)
 
 ##How does Vue compares to Angular / React?
 Those three frameworks really do work well for like 80% of the common use cases, but then they each have their specialty, some problems they solve better than the others.
@@ -173,21 +173,78 @@ Another alternative is using the [Spread operator](http://redux.js.org/docs/reci
 
 ---
 
-##Single file components
+##Components
 Vue takes a React-like approach when it comes to complex interfaces, where everything is a Component. 
-Its approach differs from React, and is very close to [`CustomElement`s](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). 
-In a `SingleFileComponent.vue` you'll have  
-Here's how it looks like.
+Here's [how it looks like](https://codepen.io/rbelling/pen/wraxdg).
 
-@TODO add example
+```javascript
+const MyExample = {
+  template: '<div class="rotd">Random number of the day (ROTD) is: {{rotd}}</div>',
+  data () {
+    return {
+      rotd: Math.random()
+    }
+  }
+}
 
+const App = new Vue({
+  el: "#app",
+  components: {
+    MyExample
+  },
+  // MyExample can be added to a template with the tag <my-example>
+  template: `
+    <div>
+      Now we'll add a custom component.
+      <my-example/>
+    </div>
+  `
+})
+```
+
+That's great, but we can do better. We can use Single File components, which encapsulate Template, Style and Script in a single file, marked by the `.vue` extension.
+Vue's approach is very close to WebComponents, see [`CustomElement`s](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). 
+
+```javascript
+<!-- MyExample.vue -->
+
+<!-- Styles -->
+<style lang="scss" scoped>
+  $c-copy-color: #737373;
+  .rotd {
+    color: $c-copy-color;
+  }
+</style>
+
+<!-- template -->
+<template lang="pug">
+  .rotd  Random number of the day (ROTD) is: {{rotd}}
+</template>
+
+<!-- js -->
+<script>
+  export default {
+    data () {
+      return {
+        rotd: Math.random()
+      }
+    }
+  }
+</script>
+```
+
+As you can see, you can use any flavor of templates and CSS pre-processor. This approach is really flexible and reduces friction a lot.
+Because CSS can be specified as scoped, it doesn't bleed into other parts of the app. This makes it possible to hand off stylesheets to Designers, that have an understanding of CSS authoring but not of the CSS-in-JS weirdness.    
+The amount of configuration / boilerplate code required is minimal: this is all possible thanks to Webpack and [Vue-Loader](https://github.com/vuejs/vue-loader). 
+
+Furthermore, single file components support Hot Reloading, making the development experience really smooth.
 # Vue.js community
 
 Vue was created by a former Google Employee, Evan You. It started as a personal project, that was released to the public in 2014, before Angular2 was out, and before React had took off so wildly. 
 After it was discovered by the Laravel community, the project gathered momentum, and is now maintained full time by the creator, supported by a fairly big community (67k stars on GitHub).
 
 It isn't backed by a huge corporation, like React. That being said, it has had 100% test coverage since the early days, very few open issues on GitHub (which are processed very quickly either by the creator or by the community. 
-Newer version rarely come with breaking changes, and when it does there's usually a migration build that guides you through the upgrade. 
+Newer versions rarely come with breaking changes, and when it does there's usually a migration build that guides you through the upgrade. 
 The community is growing really fast and has been supporting the development of new features, and even if the framework isn't backed by a large corporation, the [number of open issues][issues] on GitHub is really low comparing to other frameworks. 
 
 # Market adoption
@@ -201,7 +258,7 @@ The admin tool at Gilt would greatly benefit from a do-over. With Vue, we could 
 Thanks to directives, it would be really easy to create tables and other repetitive layout elements that we have there. 
 
 ## Quicker turnarounds with designers thanks to single file components
-In single file components you can easily edit the css (style block), without dealing with weird css-in-js which requires to have solid JS knowledge before being able to author css
+In single file components you can easily edit the css (style block), without dealing with weird css-in-js which requires to have solid JS knowledge before being able to author CSS.
 
 With Vue, designers could easily edit the stylesheets, using their favorite tools (SASS / Less / PostCSS / ..). 
 Also, because styles can be scoped, there's no risk of accidentally modifying other elements in the page.

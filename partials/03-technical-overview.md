@@ -125,10 +125,68 @@ Another alternative is using the [Spread operator](http://redux.js.org/docs/reci
 
 ---
 
-##Single file components
+##Components
 Vue takes a React-like approach when it comes to complex interfaces, where everything is a Component. 
-Its approach differs from React, and is very close to [`CustomElement`s](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). 
-In a `SingleFileComponent.vue` you'll have  
-Here's how it looks like.
+Here's [how it looks like](https://codepen.io/rbelling/pen/wraxdg).
 
-@TODO add example
+```javascript
+const MyExample = {
+  template: '<div class="rotd">Random number of the day (ROTD) is: {{rotd}}</div>',
+  data () {
+    return {
+      rotd: Math.random()
+    }
+  }
+}
+
+const App = new Vue({
+  el: "#app",
+  components: {
+    MyExample
+  },
+  // MyExample can be added to a template with the tag <my-example>
+  template: `
+    <div>
+      Now we'll add a custom component.
+      <my-example/>
+    </div>
+  `
+})
+```
+
+That's great, but we can do better. We can use Single File components, which encapsulate Template, Style and Script in a single file, marked by the `.vue` extension.
+Vue's approach is very close to WebComponents, see [`CustomElement`s](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). 
+
+```javascript
+<!-- MyExample.vue -->
+
+<!-- Styles -->
+<style lang="scss" scoped>
+  $c-copy-color: #737373;
+  .rotd {
+    color: $c-copy-color;
+  }
+</style>
+
+<!-- template -->
+<template lang="pug">
+  .rotd  Random number of the day (ROTD) is: {{rotd}}
+</template>
+
+<!-- js -->
+<script>
+  export default {
+    data () {
+      return {
+        rotd: Math.random()
+      }
+    }
+  }
+</script>
+```
+
+As you can see, you can use any flavor of templates and CSS pre-processor. This approach is really flexible and reduces friction a lot.
+Because CSS can be specified as scoped, it doesn't bleed into other parts of the app. This makes it possible to hand off stylesheets to Designers, that have an understanding of CSS authoring but not of the CSS-in-JS weirdness.    
+The amount of configuration / boilerplate code required is minimal: this is all possible thanks to Webpack and [Vue-Loader](https://github.com/vuejs/vue-loader). 
+
+Furthermore, single file components support Hot Reloading, making the development experience really smooth.
