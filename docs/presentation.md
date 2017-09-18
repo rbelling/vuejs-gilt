@@ -8,7 +8,7 @@
 Vue.js is a library that makes it very easy to build Web UI. It's a set of tools that work together really well, rather than a full-featured monolithic framework.
 Its design is inspired by the [MVVM pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvvm), where Vue represents the VM part of it.
 
-Use cases: Vue allows you to create everything from 
+Use cases: Vue allows you to create everything from
 - small widgets that you drop in existing applications
 - medium sized apps where certain parts of the page are controlled with js, re-rendering certain parts of the app dynamically 
 - larger enterprise apps (SPAs)

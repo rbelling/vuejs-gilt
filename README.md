@@ -4,11 +4,12 @@ Please go to the GitHub page for the final [Presentation](https://rbelling.githu
 
 ### Todo:
 - [x] Put rough agenda together
-- [ ] Get resources for the items in the agenda and write markdown for it
+- [x] Get resources for the items in the agenda and write markdown for it
 - [ ] Add examples to slides
 - [ ] Funny images
 - [x] First slide (intro)
 - [ ] Last slide (questions, contacts)
+- [ ] Add css animation from https://codepen.io/alexchopin/pen/jBWrej
 - [ ] Style slides
 
 ## Getting Started
