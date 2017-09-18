@@ -4,7 +4,7 @@ Vue was created by a former Google Employee, Evan You. It started as a personal 
 After it was discovered by the Laravel community, the project gathered momentum, and is now maintained full time by the creator, supported by a fairly big community (67k stars on GitHub).
 
 It isn't backed by a huge corporation, like React. That being said, it has had 100% test coverage since the early days, very few open issues on GitHub (which are processed very quickly either by the creator or by the community. 
-Newer version rarely come with breaking changes, and when it does there's usually a migration build that guides you through the upgrade. 
+Newer versions rarely come with breaking changes, and when it does there's usually a migration build that guides you through the upgrade. 
 The community is growing really fast and has been supporting the development of new features, and even if the framework isn't backed by a large corporation, the [number of open issues][issues] on GitHub is really low comparing to other frameworks. 
 
 # Market adoption
@@ -18,7 +18,7 @@ The admin tool at Gilt would greatly benefit from a do-over. With Vue, we could 
 Thanks to directives, it would be really easy to create tables and other repetitive layout elements that we have there. 
 
 ## Quicker turnarounds with designers thanks to single file components
-In single file components you can easily edit the css (style block), without dealing with weird css-in-js which requires to have solid JS knowledge before being able to author css
+In single file components you can easily edit the css (style block), without dealing with weird css-in-js which requires to have solid JS knowledge before being able to author CSS.
 
 With Vue, designers could easily edit the stylesheets, using their favorite tools (SASS / Less / PostCSS / ..). 
 Also, because styles can be scoped, there's no risk of accidentally modifying other elements in the page.
