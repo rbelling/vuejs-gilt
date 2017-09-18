@@ -9,28 +9,39 @@ body {
   font-family: 'Ubuntu Mono', monospace;
 }
 
-.remark-slide-content h1 {
-  font-size: 45px;
-}
-.remark-slide-content h2 {
-  font-size: 34px;
-}
-.remark-slide-content h3 {
-  font-size: 25px;
-}
-.remark-slide-content p, .remark-slide-content li {
-  font-size: 18px;
-  line-height: 1.2;
+.remark-slide-content {
+  h1 {
+    font-size: 45px;
+  }
+  h2 {
+    font-size: 34px;
+  }
+  h3 {
+    font-size: 25px;
+  }
+  p, li {
+    font-size: 18px;
+    line-height: 1.4;
+  }
 }
 
 .img-large > img {
   margin-top: 10px;
   max-width: 450px;
 }
+
 .authors {
   width: 100%;
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
-  color: magenta !important;
+}
+
+.logo {
+  position: fixed;
+  width: 119px;
+  height: 25px;
+  background-image: url('./logo.svg');
+  background-size: cover;
+  background-position: center;
 }

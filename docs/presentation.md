@@ -1,6 +1,7 @@
 .center[#Easier done than said: Vue.js]
 .img-large.center[![Vue.js Badge](assets/vue-badge.png)]
 .authors[[Alan Fitzpatrick](afitzpatrick@gilt.com) [Riccardo Bellingeri](rbellingeri@gilt.com)]
+count: false
 ---
 ##TL;DR
 **The good parts of Angular, plus the good parts of React**
@@ -20,6 +21,7 @@ Vue shines in the framework landscape as:
 - Extremely small, the core is just 16kb min+gzip 
 - It's very fast at runtime, and beats React or Angular in [some cases](https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts/table.html)
 - Lets you add complex features to its core, like Vue Router and so on. It is considered a Progressive framework because of its modularity.
+- Easier to migrate legacy code then with React / Angular
 
 Certainly it's not suited for all use cases. It's aimed at the Web, so for example if you need something like React Native, Vue probably wouldn't be your first choice, although there are projects like [Weex](https://weex.apache.org/), backed by AliBaba, that aims at filling that gap.
 
@@ -50,16 +52,16 @@ The new [Gilt+ CLP][1] can be seen as one main component (`PageComposer`) that r
 
 We needed to allow a team of multiple Front End developers to work in parallel with as limited friction as we could; each component is published to NPM and imported as a dependency in `PageComposer`.
 
-Vue supports Single File Components, which is aligned to the spec of WebComponents. We found that those suited our needs perfectly.
 Vue was easy to pick up comparing to other solutions out there, so we'll be able to easily add new developers to the project, maintenance will be easier.
+supports Single File Components, which is aligned to the spec of WebComponents. We found that those suited our needs perfectly.
+
+@todo add graph of how pagecomposer works
 
 ---
 [1]: http://www.gilt.com/men
 [2]: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements
 
 ##Hello World
-
-some description here
 ```html
 <script src="https://unpkg.com/vue"></script>
 
@@ -130,70 +132,47 @@ new Vue({
 
 ---
 ##Reactivity model
-The state of a Vue component is stored into a `data` property, which is similar to `getInitialState()` in React.  
-
-
-@todo: compress this into a single slide
+The state of a Vue component is stored into a POJO called `data`. 
+In React you'd declare this in `getInitialState()`.  
 
 ```javascript
 new Vue({
   el: '#example',
   data: {
-    a: 1,
-    b: 2
+    a: 1, b: 2
   },
   computed: {
-    sum() {
-      return this.a + this.b
-    }
-  }
-})
+*    sum() { return this.a + this.b }
 ```
 
 ```html
-<div id="example">
-  <span> {{a}} + {{b}} = {{sum}} </span>
-</div>
+<div id="example">{{a}} + {{b}} = {{sum}}</div>
+<!-- 1 + 2 = 3 -->
+<button @click="a++">Increment `a`</button>
 ```
-```html
-<!-- Output -->
-1 + 2 = 3
-```
-This example shows one of the key features of Vue: if one of the two addends is changed, what should we do to re-render the UI?
-Nothing.
 
-@todo compress into one slide
+If one of the two addends is changed, what should we do to re-render the UI?  
 
-The computed property `sum` depends on `a` and `b`. Whenever either of those is updated, `sum` will be adjusted accordingly.
-At startup time, Vue converts all the properties of the `data` object (plain JS), and transforms them in getters/setters, making them reactive.
+*Nothing*.
+
+`sum` depends on `a` and `b`. Whenever either of those is updated, `sum` will be computed accordingly.
+At startup time, Vue converts all of the properties in `data`, and transforms them in getters/setters, making them reactive.
 When you set `a` or `b` to something else, the rendered HTML updates automatically.
 
-There's no need to worry about calling `setState()`, or listening to store events, or creating custom observables, or anything else.
-[Output](https://codepen.io/rbelling/pen/QqwPGY)
+There's no need to call `setState()`, or listening to store events, or anything else.
 
----  
-
-The `divisibility` property depends on `howMany`, so it will be automatically updated by Vue every time the dependency is modified.
-
-Under the hood, Vue  accomplishes this by reading all of the properties in `data`, and converting them to getter/setters, so that it can introduce a dependency tracking system.
-
-###Limitations of `data`
-Vue cannot detect property addition or deletion so you have to declare every property in the initial data object. However it’s possible to add reactive properties to a nested object using the Vue.set(object, key, value)
-Another alternative is using the [Spread operator](http://redux.js.org/docs/recipes/UsingObjectSpreadOperator.html)
+[//]: # (https://codepen.io/rbelling/pen/QqwPGY)
 
 ---
 
 ##Components
 Vue takes a React-like approach when it comes to complex interfaces, where everything is a Component.
-Here's [how it looks like](https://codepen.io/rbelling/pen/wraxdg).
 
 ```javascript
 const MyExample = {
-  template: '<div class="rotd">Random number of the day (ROTD) is: {{rotd}}</div>',
+  template: '<div class="rotd">Random number of the day: {{rotd}}</div>',
   data () {
-    return {
-      rotd: Math.random()
-    }
+    return { rotd: Math.random() }
   }
 }
 
@@ -202,52 +181,43 @@ const App = new Vue({
   components: {
     MyExample
   },
-  // MyExample can be added to a template with the tag <my-example>
-  template: `
-    <div>
+  template: 
+    `<div>
       Now we'll add a custom component.
-      <my-example/>
-    </div>
-  `
-})
+*     <my-example/>
+    </div>`
 ```
+[//]: # (https://codepen.io/rbelling/pen/wraxdg)
 
-That's great, but we can do better. We can use Single File components, which encapsulate Template, Style and Script in a single file, marked by the `.vue` extension.
-Vue's approach is very close to WebComponents, see [`CustomElement`s](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements).
+---
+###Single File `.vue` Components 
+####`template`, `style` and `script` in a single file, similar to `CustomElement` spec.
 
-```javascript
-<!-- MyExample.vue -->
-
-<!-- Styles -->
+```html
 <style lang="scss" scoped>
-  $c-copy-color: #737373;
+  $copy-color: #737373;
   .rotd {
-    color: $c-copy-color;
+    color: $copy-color;
   }
 </style>
 
-<!-- template -->
 <template lang="pug">
   .rotd  Random number of the day (ROTD) is: {{rotd}}
 </template>
 
-<!-- js -->
 <script>
   export default {
-    data () {
-      return {
-        rotd: Math.random()
-      }
+    data() {
+      return { rotd: Math.random() }
     }
   }
 </script>
 ```
-
-As you can see, you can use any flavor of templates and CSS pre-processor. This approach is really flexible and reduces friction a lot.
-Because CSS can be specified as scoped, it doesn't bleed into other parts of the app. This makes it possible to hand off stylesheets to Designers, that have an understanding of CSS authoring but not of the CSS-in-JS weirdness.    
-The amount of configuration / boilerplate code required is minimal: this is all possible thanks to Webpack and [Vue-Loader](https://github.com/vuejs/vue-loader).
-
-Furthermore, single file components support Hot Reloading, making the development experience really smooth.
+* Micro-service friendly, reduced friction
+* Any CSS pre-processor & template engine
+* CSS `scoped` means no side effects
+* Designers can author CSS normally (no css-in-js)
+* HotReloading with `webpack` & `vue-loader` 
 
 ---
 
@@ -357,37 +327,37 @@ src
 ---
 # Vue.js community
 
-Vue was created by a former Google Employee, Evan You. It started as a personal project, that was released to the public in 2014, before Angular2 was out, and before React had took off so wildly. 
-After it was discovered by the Laravel community, the project gathered momentum, and is now maintained full time by the creator, supported by a fairly big community (67k stars on GitHub).
+Created by **Evan You** (former Creative Technologist at Google Creative Lab). 
+Vue started as a personal project, to solve common challenges in the creative development, like the need for tools that make it quick to prototype, and creating highly interactive content.
 
-It isn't backed by a huge corporation, like React. That being said, it has had 100% test coverage since the early days, very few open issues on GitHub (which are processed very quickly either by the creator or by the community. 
-Newer versions rarely come with breaking changes, and when it does there's usually a migration build that guides you through the upgrade. 
-The community is growing really fast and has been supporting the development of new features, and even if the framework isn't backed by a large corporation, the [number of open issues][issues] on GitHub is really low comparing to other frameworks. 
-@todo mention differences in licensing between React and Vue
+Released to the public in 2014 (before Angular2) was out, and before React took off. 
+Gathered momentum after it was discovered by the Laravel community, it is now maintained full time by the creator, supported by a fairly big community 
+
+It isn't backed by a huge corp, like React, but: 
+* It has had 100% test coverage since the early days
+* Very few open issues on GitHub, processed very quickly
+* Breaking changes are rare 
+  * There's usually a migration build, guiding you through the upgrade w/ deprecation warnings 
+* Comes with MIT license (as opposed to React)
 
 ---
 
-# Market adoption
-Big players that use vue (alibaba, optimizely)
-
+# Adoption
+67k stars on GitHub
 @todo find a few logos here
+Big players that use Vue (alibaba, optimizely)
 
 ---
 
-# What's next
-
-# Interesting use cases 
-## Gilt admin tool
+## What's next?
+### Gilt admin tool
 The admin tool at Gilt would greatly benefit from a do-over. With Vue, we could gradually refactor certain components, without having to redo the whole thing from scratch at one time.
 Thanks to directives, it would be really easy to create tables and other repetitive layout elements that we have there. 
-
-## Quicker turnarounds with designers thanks to single file components
-In single file components you can easily edit the css (style block), without dealing with weird css-in-js which requires to have solid JS knowledge before being able to author CSS.
 
 With Vue, designers could easily edit the stylesheets, using their favorite tools (SASS / Less / PostCSS / ..). 
 Also, because styles can be scoped, there's no risk of accidentally modifying other elements in the page.
 
-## Trusted marketplace for Vue components
+###Trusted marketplace for Vue components
 
 The idea of a marketplace for trusted plugins is certainly not new: it would be interesting to see something like Wordpress marketplace, where you could just add a component to your page without worrying about integrating it.
 
