@@ -289,9 +289,13 @@ A server-rendered Vue.js app can also be considered "isomorphic" or "universal",
 * Faster Time to Content
 * More Work done server side
 
+---
+
 ### How easy is it to configure ?
 * Easily setup as part of the build process
 * Constraints in terms of lifecycle hooks
+
+.img-large.center[![Vue Hyrdration](https://i.stack.imgur.com/RwJaZ.png)]
 
 ---
 
