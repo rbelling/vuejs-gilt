@@ -30,8 +30,8 @@ Hello Vue.js!
 ```
 ---   
 ##Progressive Framework  
-It's called progressive because the core of Vue is minimal and extremely modular. 
-You can get the Runtime-only build, or Compiler + Runtime if you need to compile JS templates on the client. 
+It's called progressive because the core of Vue is minimal and extremely modular.
+You can get the Runtime-only build, or Compiler + Runtime if you need to compile JS templates on the client.
 
 You could even choose to add Vue merely as a jQuery replacement, (the runtime itself is smaller than jQuery when minified + gzipped).
 If you decide to add more complex features to your app, like the Router, Vuex and so on, you can certainly do so, but by default is much less bloated then other frameworks.
@@ -44,9 +44,9 @@ Vue's virtual dom is an intermediate representation of the DOM tree, that only e
 
 Vue relies on a really fast virtual dom implementation, which offers similar performances to React (even faster at times).
 
-There are a few key differences that is worth noting. 
-In React when a component's state changes, it triggers the re-render of the entire component sub-tree, starting from that component as a root. 
-To avoid unnecessary re-renders of child components, you need to either use [PureComponent](https://facebook.github.io/react/docs/react-api.html#react.purecomponent) or implement `shouldComponentUpdate()` whenever you can. 
+There are a few key differences that is worth noting.
+In React when a component's state changes, it triggers the re-render of the entire component sub-tree, starting from that component as a root.
+To avoid unnecessary re-renders of child components, you need to either use [PureComponent](https://facebook.github.io/react/docs/react-api.html#react.purecomponent) or implement `shouldComponentUpdate()` whenever you can.
 You may also need to use immutable data structures to make your state changes more optimized.
 
 In Vue, a component's dependencies are automatically tracked during its render, so the system knows precisely which components actually need to re-render when state changes. Each component can be considered to have shouldComponentUpdate automatically implemented for you, without the nested component caveats.
@@ -54,9 +54,9 @@ Overall this removes the need for a whole class of performance optimizations fro
 
 ##Directives
 Vue offers various directives, heavily inspired by the Angular world.
-A directive is a special attribute that you can add to a template. Some examples are `v-for`, `v-on (@eventName)`, `v-if`, 
+A directive is a special attribute that you can add to a template. Some examples are `v-for`, `v-on (@eventName)`, `v-if`,
 
-Directives make it really straight forward to add event listeners. 
+Directives make it really straight forward to add event listeners.
 
 ```javascript
 new Vue({
@@ -77,7 +77,7 @@ new Vue({
 ##Reactivity model
 The state of a Vue component is stored into a `data` property, which is similar to `getInitialState()` in React.  
 
-Let's jump straight to an example: we want to display the sum of two numbers `a` and `b`. 
+Let's jump straight to an example: we want to display the sum of two numbers `a` and `b`.
 
 ```javascript
 new Vue({
@@ -103,12 +103,12 @@ new Vue({
 <!-- Output -->
 1 + 2 = 3
 ```
-This example shows one of the key features of Vue: if one of the two addends is changed, what should we do to re-render the UI? 
+This example shows one of the key features of Vue: if one of the two addends is changed, what should we do to re-render the UI?
 Nothing.
 
-The computed property `sum` depends on `a` and `b`. Whenever either of those is updated, `sum` will be adjusted accordingly. 
-At startup time, Vue converts all the properties of the `data` object (plain JS), and transforms them in getters/setters, making them reactive. 
-When you set `a` or `b` to something else, the rendered HTML updates automatically. 
+The computed property `sum` depends on `a` and `b`. Whenever either of those is updated, `sum` will be adjusted accordingly.
+At startup time, Vue converts all the properties of the `data` object (plain JS), and transforms them in getters/setters, making them reactive.
+When you set `a` or `b` to something else, the rendered HTML updates automatically.
 
 There's no need to worry about calling `setState()`, or listening to store events, or creating custom observables, or anything else.
 [Output](https://codepen.io/rbelling/pen/QqwPGY)
@@ -120,13 +120,13 @@ The `divisibility` property depends on `howMany`, so it will be automatically up
 Under the hood, Vue  accomplishes this by reading all of the properties in `data`, and converting them to getter/setters, so that it can introduce a dependency tracking system.
 
 ###Limitations of `data`
-Vue cannot detect property addition or deletion so you have to declare every property in the initial data object. However it’s possible to add reactive properties to a nested object using the Vue.set(object, key, value) 
+Vue cannot detect property addition or deletion so you have to declare every property in the initial data object. However it’s possible to add reactive properties to a nested object using the Vue.set(object, key, value)
 Another alternative is using the [Spread operator](http://redux.js.org/docs/recipes/UsingObjectSpreadOperator.html)
 
 ---
 
 ##Components
-Vue takes a React-like approach when it comes to complex interfaces, where everything is a Component. 
+Vue takes a React-like approach when it comes to complex interfaces, where everything is a Component.
 Here's [how it looks like](https://codepen.io/rbelling/pen/wraxdg).
 
 ```javascript
@@ -155,7 +155,7 @@ const App = new Vue({
 ```
 
 That's great, but we can do better. We can use Single File components, which encapsulate Template, Style and Script in a single file, marked by the `.vue` extension.
-Vue's approach is very close to WebComponents, see [`CustomElement`s](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). 
+Vue's approach is very close to WebComponents, see [`CustomElement`s](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements).
 
 ```javascript
 <!-- MyExample.vue -->
@@ -187,6 +187,23 @@ Vue's approach is very close to WebComponents, see [`CustomElement`s](https://de
 
 As you can see, you can use any flavor of templates and CSS pre-processor. This approach is really flexible and reduces friction a lot.
 Because CSS can be specified as scoped, it doesn't bleed into other parts of the app. This makes it possible to hand off stylesheets to Designers, that have an understanding of CSS authoring but not of the CSS-in-JS weirdness.    
-The amount of configuration / boilerplate code required is minimal: this is all possible thanks to Webpack and [Vue-Loader](https://github.com/vuejs/vue-loader). 
+The amount of configuration / boilerplate code required is minimal: this is all possible thanks to Webpack and [Vue-Loader](https://github.com/vuejs/vue-loader).
 
 Furthermore, single file components support Hot Reloading, making the development experience really smooth.
+
+## Vuex
+Centralized State Management for Vue.js.
+
+* Vuex allows all state to be controlled from one central location
+* Allows for a single source of Truth
+* Mutations can only occur in a predictable fashion
+* Integrates with the standard Vue Dev Tools
+* Allows Time Travel within the App
+* State Snapshots
+
+### One Way Data Flow
+* The state, which is the source of truth that drives our app;
+* The view, which is just a declarative mapping of the state;
+* The actions, which are the possible ways the state could change in reaction to user inputs from the view.
+
+## SSR
