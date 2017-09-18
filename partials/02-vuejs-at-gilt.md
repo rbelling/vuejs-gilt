@@ -1,12 +1,5 @@
 # Vue.js at Gilt
 
-Examples of real problems solved by Vue in Gilt
-
-[//]: # (
-  - web-product-listing: Moving from tangled code to tidy components
-  - web-category-page: What we needed from the framework
-)
-
 ## Web Product Listing
 
 * Simple Reusable components
@@ -18,6 +11,8 @@ Examples of real problems solved by Vue in Gilt
   * Data Transformation
   * State Control and Flow
 * SSR components using Vuex
+
+---
 
 ## Web Category Page
 

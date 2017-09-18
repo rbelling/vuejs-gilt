@@ -1,14 +1,6 @@
-Here we should provide a more in-depth overview of Vue features, e.g.:
-- [x] Hello World
-- [x] Progressive Framework
-- [x] virtual dom
-- [x] Directives
-- [x] Reactivity
-- [ ] Single File Components
-- [x] Vuex
-- [x] SSR
-
 ##Hello World
+
+some description here
 ```html
 <script src="https://unpkg.com/vue"></script>
 
@@ -28,7 +20,8 @@ new Vue({
 <!-- Output -->
 Hello Vue.js!
 ```
----   
+---
+ 
 ##Progressive Framework  
 It's called progressive because the core of Vue is minimal and extremely modular.
 You can get the Runtime-only build, or Compiler + Runtime if you need to compile JS templates on the client.
@@ -39,6 +32,7 @@ If you decide to add more complex features to your app, like the Router, Vuex an
 You can have Vue controlling only certain parts of your app, which comes in handy when migrating a legacy codebase to Vue.
 This makes it easy to apply the strangler pattern.
 
+---
 ##Virtual Dom
 Vue's virtual dom is an intermediate representation of the DOM tree, that only exists in memory. Whenever there's a change to one of the properties Vue maintains a buffer of diffs, that are then de-duped, transformed into a patch, and applied to the real DOM (so-called Reconciliation)
 
@@ -51,6 +45,8 @@ You may also need to use immutable data structures to make your state changes mo
 
 In Vue, a component's dependencies are automatically tracked during its render, so the system knows precisely which components actually need to re-render when state changes. Each component can be considered to have shouldComponentUpdate automatically implemented for you, without the nested component caveats.
 Overall this removes the need for a whole class of performance optimizations from the developer's plate, and allows them to focus more on building the app itself as it scales.
+
+---
 
 ##Directives
 Vue offers various directives, heavily inspired by the Angular world.
@@ -77,7 +73,8 @@ new Vue({
 ##Reactivity model
 The state of a Vue component is stored into a `data` property, which is similar to `getInitialState()` in React.  
 
-Let's jump straight to an example: we want to display the sum of two numbers `a` and `b`.
+
+@todo: compress this into a single slide
 
 ```javascript
 new Vue({
@@ -105,6 +102,8 @@ new Vue({
 ```
 This example shows one of the key features of Vue: if one of the two addends is changed, what should we do to re-render the UI?
 Nothing.
+
+@todo compress into one slide
 
 The computed property `sum` depends on `a` and `b`. Whenever either of those is updated, `sum` will be adjusted accordingly.
 At startup time, Vue converts all the properties of the `data` object (plain JS), and transforms them in getters/setters, making them reactive.
@@ -191,6 +190,8 @@ The amount of configuration / boilerplate code required is minimal: this is all 
 
 Furthermore, single file components support Hot Reloading, making the development experience really smooth.
 
+---
+
 ## Vuex
 Centralized State Management for Vue.js.
 
@@ -211,11 +212,15 @@ Centralized State Management for Vue.js.
 * Actions from different views may need to mutate the same piece of state.
 * Updating and keeping multiple components in sync can be tedious and hard on the app
 
+---
+
 ### The Answer
 * A Global Singleton
 * Component Tree becomes the View
 * Any component can access state and trigger actions from anywhere
-[DIAGRAM](https://vuex.vuejs.org/en/images/vuex.png)
+
+.img-large.center[![Vuex dataflow](https://vuex.vuejs.org/en/images/vuex.png)]
+---
 
 ```javascript
 <!-- MyExample.vue -->
@@ -253,6 +258,8 @@ An Example App Structure
         └── products.js   # products module
 ```
 
+---
+
 ## SSR
 It is possible to render components into HTML strings on the server, send them directly to the browser, and finally "hydrate" the static markup into a fully interactive app on the client.
 
@@ -266,6 +273,8 @@ A server-rendered Vue.js app can also be considered "isomorphic" or "universal",
 ### How easy is it to configure ?
 * Easily setup as part of the build process
 * Constraints in terms of lifecycle hooks
+
+---
 
 ### Universal Code
 * Write once work everywhere
@@ -285,3 +294,5 @@ src
 ```
 
 * Mounting of the Vue app is only done within the entry-client
+
+---
