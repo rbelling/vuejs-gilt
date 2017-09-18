@@ -7,7 +7,7 @@ Please go to the GitHub page for the final [Presentation](https://rbelling.githu
 - [ ] Get resources for the items in the agenda and write markdown for it
 - [ ] Add examples to slides
 - [ ] Funny images
-- [ ] First slide (intro)
+- [x] First slide (intro)
 - [ ] Last slide (questions, contacts)
 - [ ] Style slides
 

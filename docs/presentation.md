@@ -1,5 +1,6 @@
 # Easier done than said: Vue.js
-
+.img-large.center[![Vue.js Badge](assets/vue-badge.png)]
+---
 ##TL;DR
 **The good parts of Angular, plus the good parts of React**
 
@@ -10,7 +11,7 @@ Use cases: Vue allows you to create everything from
 - small widgets that you drop in existing applications
 - medium sized apps where certain parts of the page are controlled with js, re-rendering certain parts of the app dynamically 
 - larger enterprise apps (SPAs)
-
+---
 ##How does Vue compares to Angular / React?
 Those three frameworks really do work well for like 80% of the common use cases, but then they each have their specialty, some problems they solve better than the others.
 
