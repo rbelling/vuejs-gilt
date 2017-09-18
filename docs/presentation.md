@@ -80,7 +80,7 @@ new Vue({
 Hello Vue.js!
 ```
 ---
- 
+
 ##Progressive Framework  
 It's called progressive because the core of Vue is minimal and extremely modular.
 You can get the Runtime-only build, or Compiler + Runtime if you need to compile JS templates on the client.
@@ -266,10 +266,28 @@ Centralized State Management for Vue.js.
 * The view, which is just a declarative mapping of the state;
 * The actions, which are the possible ways the state could change in reaction to user inputs from the view.
 
+---
+
+.img-large.center[![One Way Flow](https://vuex.vuejs.org/en/images/flow.png)]
+
+---
+
 ### Issues that can occur
 * Multiple views may depend on the same piece of state.
 * Actions from different views may need to mutate the same piece of state.
 * Updating and keeping multiple components in sync can be tedious and hard on the app
+
+---
+
+.img-large.center[![Component Provider Bus](https://i.imgur.com/sZ3CZTx.png)]
+
+---
+
+.img-large.center[![Component Provider Bus Mess](https://i.imgur.com/Xm10t7F.png)]
+
+---
+
+.img-large.center[![Vuex Fix](https://i.imgur.com/zqmhD88.png)]
 
 ---
 
@@ -282,7 +300,6 @@ Centralized State Management for Vue.js.
 ---
 
 ```javascript
-<!-- MyExample.vue -->
 const store = new Vuex.Store({
   state: {
     count: 0
@@ -300,11 +317,8 @@ console.log(store.state.count) // -> 1
 ```
 
 ```
-An Example App Structure
 ├── index.html
 ├── main.js
-├── api
-│   └── ... # abstractions for making API requests
 ├── components
 │   ├── App.vue
 │   └── ...
@@ -324,7 +338,12 @@ It is possible to render components into HTML strings on the server, send them d
 
 A server-rendered Vue.js app can also be considered "isomorphic" or "universal", in the sense that the majority of your app's code runs on both the server and the client.
 
+.img-large.center[![Vue SSR](https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png)]
+
+---
+
 ### Why ?
+.img-large.center[![Vue SSR](https://i.ytimg.com/vi/gCV3MD-szvc/maxresdefault.jpg)]
 * Better SEO
 * Faster Time to Content
 * More Work done server side
@@ -355,6 +374,7 @@ src
 * Mounting of the Vue app is only done within the entry-client
 
 ---
+
 # Vue.js community
 
 Vue was created by a former Google Employee, Evan You. It started as a personal project, that was released to the public in 2014, before Angular2 was out, and before React had took off so wildly. 
