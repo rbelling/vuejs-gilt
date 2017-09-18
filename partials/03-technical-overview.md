@@ -5,8 +5,8 @@ Here we should provide a more in-depth overview of Vue features, e.g.:
 - [x] Directives
 - [x] Reactivity
 - [ ] Single File Components
-- [ ] Vuex
-- [ ] SSR
+- [x] Vuex
+- [x] SSR
 
 ##Hello World
 ```html
