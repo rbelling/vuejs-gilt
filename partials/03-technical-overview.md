@@ -201,9 +201,56 @@ Centralized State Management for Vue.js.
 * Allows Time Travel within the App
 * State Snapshots
 
-### One Way Data Flow
+### One Way Data Flow In a Component
 * The state, which is the source of truth that drives our app;
 * The view, which is just a declarative mapping of the state;
 * The actions, which are the possible ways the state could change in reaction to user inputs from the view.
+
+### Issues that can occur
+* Multiple views may depend on the same piece of state.
+* Actions from different views may need to mutate the same piece of state.
+* Updating and keeping multiple components in sync can be tedious and hard on the app
+
+### The Answer
+* A Global Singleton
+* Component Tree becomes the View
+* Any component can access state and trigger actions from anywhere
+[DIAGRAM](https://vuex.vuejs.org/en/images/vuex.png)
+
+```javascript
+<!-- MyExample.vue -->
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment (state) {
+      state.count++
+    }
+  }
+})
+
+store.commit('increment')
+
+console.log(store.state.count) // -> 1
+```
+
+```
+An Example App Structure
+├── index.html
+├── main.js
+├── api
+│   └── ... # abstractions for making API requests
+├── components
+│   ├── App.vue
+│   └── ...
+└── store
+    ├── index.js          # where we assemble modules and export the store
+    ├── actions.js        # root actions
+    ├── mutations.js      # root mutations
+    └── modules
+        ├── cart.js       # cart module
+        └── products.js   # products module
+```
 
 ## SSR
