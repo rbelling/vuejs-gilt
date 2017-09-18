@@ -218,15 +218,11 @@ Centralized State Management for Vue.js.
 * Actions from different views may need to mutate the same piece of state.
 * Updating and keeping multiple components in sync can be tedious and hard on the app
 
----
-
 .img-large.center[![Component Provider Bus](https://i.imgur.com/sZ3CZTx.png)]
 
 ---
 
 .img-large.center[![Component Provider Bus Mess](https://i.imgur.com/Xm10t7F.png)]
-
----
 
 .img-large.center[![Vuex Fix](https://i.imgur.com/zqmhD88.png)]
 
