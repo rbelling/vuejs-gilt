@@ -419,7 +419,9 @@ The idea of a marketplace for trusted plugins is certainly not new: it would be 
 
 [issues]: https://github.com/vuejs/vue/issues
 [stability]: http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/#Stability
-##Thank you
+## Thank you for listening ;)
+
+
 @todo add https://codepen.io/alexchopin/pen/jBWrej
 
 
