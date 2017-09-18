@@ -271,3 +271,15 @@ A server-rendered Vue.js app can also be considered "isomorphic" or "universal",
 * Write once work everywhere
 * Pre-fetched Data
 * Deterministic Rendering
+
+```
+src
+├── components
+│   ├── Foo.vue
+│   ├── Bar.vue
+│   └── Baz.vue
+├── App.vue
+├── app.js # universal entry
+├── entry-client.js # runs in browser only
+└── entry-server.js # runs on server only
+```
