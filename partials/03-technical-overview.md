@@ -254,3 +254,6 @@ An Example App Structure
 ```
 
 ## SSR
+It is possible to render components into HTML strings on the server, send them directly to the browser, and finally "hydrate" the static markup into a fully interactive app on the client.
+
+A server-rendered Vue.js app can also be considered "isomorphic" or "universal", in the sense that the majority of your app's code runs on both the server and the client.
