@@ -283,3 +283,5 @@ src
 ├── entry-client.js # runs in browser only
 └── entry-server.js # runs on server only
 ```
+
+* Mounting of the Vue app is only done within the entry-client
