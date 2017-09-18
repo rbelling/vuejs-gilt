@@ -1,5 +1,6 @@
-# Easier done than said: Vue.js
+.center[#Easier done than said: Vue.js]
 .img-large.center[![Vue.js Badge](assets/vue-badge.png)]
+.authors[[Alan Fitzpatrick](afitzpatrick@gilt.com) [Riccardo Bellingeri](rbellingeri@gilt.com)]
 ---
 ##TL;DR
 **The good parts of Angular, plus the good parts of React**
