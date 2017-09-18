@@ -11,6 +11,7 @@ Please go to the GitHub page for the final [Presentation](https://rbelling.githu
 - [ ] Last slide (questions, contacts)
 - [ ] Add css animation from https://codepen.io/alexchopin/pen/jBWrej
 - [ ] Style slides
+- [ ] Add gilt branding (e.g. footer, something elsse)
 
 ## Getting Started
 The final presentation is generated from `docs/presentation.md`.  

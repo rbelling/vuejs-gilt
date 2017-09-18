@@ -20,6 +20,7 @@ Vue shines in the framework landscape as:
 - Extremely small, the core is just 16kb min+gzip 
 - It's very fast at runtime, and beats React or Angular in [some cases](https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts/table.html)
 - Lets you add complex features to its core, like Vue Router and so on. It is considered a Progressive framework because of its modularity.
+- Easier to migrate legacy code then with React / Angular
 
 Certainly it's not suited for all use cases. It's aimed at the Web, so for example if you need something like React Native, Vue probably wouldn't be your first choice, although there are projects like [Weex](https://weex.apache.org/), backed by AliBaba, that aims at filling that gap.
 
