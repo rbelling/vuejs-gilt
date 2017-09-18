@@ -1,7 +1,6 @@
 .center[#Easier done than said: Vue.js]
 .img-large.center[![Vue.js Badge](assets/vue-badge.png)]
 .authors[[Alan Fitzpatrick](afitzpatrick@gilt.com) [Riccardo Bellingeri](rbellingeri@gilt.com)]
-count: false
 ---
 ##TL;DR
 **The good parts of Angular, plus the good parts of React**
@@ -54,8 +53,6 @@ We needed to allow a team of multiple Front End developers to work in parallel w
 
 Vue was easy to pick up comparing to other solutions out there, so we'll be able to easily add new developers to the project, maintenance will be easier.
 supports Single File Components, which is aligned to the spec of WebComponents. We found that those suited our needs perfectly.
-
-@todo add graph of how pagecomposer works
 
 ---
 [1]: http://www.gilt.com/men
