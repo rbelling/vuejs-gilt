@@ -74,5 +74,6 @@ body {
   font-size: 22px; }
   .quote:before {
     content: "“";
+    color: #34495C;
     font-size: 60px;
     margin-right: 5px; }

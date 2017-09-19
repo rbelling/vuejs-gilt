@@ -26,7 +26,8 @@ Good for:
 * Small widgets, that you drop in existing applications 
   * Could even be merely a jQuery replacement
 * Medium sized apps 
-  * Certain parts are controlled with JS (in this case you could switch to a webpack build & single file components) 
+  * Certain parts are controlled with JS
+  * in this case you could switch to a webpack build & single file components 
 * Larger enterprise SPAs
   * VueRouter, Vuex, SSR, ...
 
@@ -59,7 +60,7 @@ Certainly it's not suited for all use cases. It's aimed at the Web, so if you ne
 Created by **Evan You** while he was working as a Creative Technologist at Google. 
 
 Vue started as a personal project, to solve common challenges in the creative development.
-The JS community needed a tool that make it quick to prototype and create highly interactive content.
+The JS community needed a tool that make it quick to **prototype** and create highly interactive content.
 
 Released to the public in **2014**, before Angular2 was out, and before React took off.
  
@@ -67,10 +68,10 @@ Gathered momentum after it was discovered by the Laravel community, it is now ma
 
 It isn't backed by a huge corp, like React, but: 
 * It has had 100% test coverage since the early days
-* Very few open issues on GitHub, processed very quickly
+* Very **few open issues** on GitHub, processed very quickly
 * Breaking changes are rare 
   * There's usually a migration build, guiding you through the upgrade w/ deprecation warnings 
-* Comes with MIT license (as opposed to React)
+* Comes with MIT **license** (as opposed to React)
 
 ---
 
@@ -123,7 +124,7 @@ The new [Gilt+ CLP][1] can be seen as one main component (`PageComposer`) that r
 
 .img-large.center[![CLP](assets/clp.png)]
 
-Multiple Front End Engineers working in parallel with as limited friction as possible; each one worked on a specific component, imported as a dependency in `PageComposer`.
+Multiple Front End Engineers working in parallel with as **limited friction** as possible; each one worked on a specific component, imported as a dependency in `PageComposer`.
 
 ---
 [1]: http://www.gilt.com/men
@@ -152,13 +153,13 @@ Hello Vue.js!
 ---
 
 ##Virtual Dom
-Intermediate representation of the DOM tree, that only exists in memory. Whenever there's a change to one of the properties, Vue:
+Intermediate representation of the DOM tree, that only exists in **memory**. Whenever there's a change to one of the properties, Vue:
 * caches the changes (`nextTick`)
-* de-dupes them, applies them as a *patch*
+* de-dupes them, applies them as a patch
 * reconciles virtual and real DOM
 
 There are a few key differences with React's implementation:
-In React when a component's state changes, it triggers the re-render of the whole sub-tree.
+In React when a component's state changes, it triggers the re-render of **the whole sub-tree**.
 To avoid unnecessary re-renders of child components, you need to implement `shouldComponentUpdate()`, or use `PureComponent`s.
 You may also need to use immutable data structures to optimize.
 
@@ -415,9 +416,14 @@ src
 ---
 ## What's next?
 
+* Designer CLP
+* web-search
+* sales listing page
+
 ### Gilt admin tool
-The admin tool at Gilt would greatly benefit from a do-over. With Vue, we could gradually refactor certain components, without having to redo the whole thing from scratch at one time.
-Thanks to directives, it would be really easy to create tables and other repetitive layout elements that we have there. 
+The admin tool at Gilt would greatly benefit from a do-over. We could incrementally refactor certain components.
+
+Thanks to directives, it would be really easy to create **tables** and other repetitive layout elements that we have there. 
 
 ###Trusted marketplace for Vue components
 

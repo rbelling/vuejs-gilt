@@ -26,7 +26,8 @@ Good for:
 * Small widgets, that you drop in existing applications 
   * Could even be merely a jQuery replacement
 * Medium sized apps 
-  * Certain parts are controlled with JS (in this case you could switch to a webpack build & single file components) 
+  * Certain parts are controlled with JS
+  * in this case you could switch to a webpack build & single file components 
 * Larger enterprise SPAs
   * VueRouter, Vuex, SSR, ...
 

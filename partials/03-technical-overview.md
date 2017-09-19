@@ -21,13 +21,13 @@ Hello Vue.js!
 ---
 
 ##Virtual Dom
-Intermediate representation of the DOM tree, that only exists in memory. Whenever there's a change to one of the properties, Vue:
+Intermediate representation of the DOM tree, that only exists in **memory**. Whenever there's a change to one of the properties, Vue:
 * caches the changes (`nextTick`)
-* de-dupes them, applies them as a *patch*
+* de-dupes them, applies them as a patch
 * reconciles virtual and real DOM
 
 There are a few key differences with React's implementation:
-In React when a component's state changes, it triggers the re-render of the whole sub-tree.
+In React when a component's state changes, it triggers the re-render of **the whole sub-tree**.
 To avoid unnecessary re-renders of child components, you need to implement `shouldComponentUpdate()`, or use `PureComponent`s.
 You may also need to use immutable data structures to optimize.
 

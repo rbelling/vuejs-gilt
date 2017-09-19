@@ -1,9 +1,14 @@
 ---
 ## What's next?
 
+* Designer CLP
+* web-search
+* sales listing page
+
 ### Gilt admin tool
-The admin tool at Gilt would greatly benefit from a do-over. With Vue, we could gradually refactor certain components, without having to redo the whole thing from scratch at one time.
-Thanks to directives, it would be really easy to create tables and other repetitive layout elements that we have there. 
+The admin tool at Gilt would greatly benefit from a do-over. We could incrementally refactor certain components.
+
+Thanks to directives, it would be really easy to create **tables** and other repetitive layout elements that we have there. 
 
 ###Trusted marketplace for Vue components
 

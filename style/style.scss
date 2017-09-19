@@ -88,6 +88,7 @@ body {
   font-size: 22px;
   &:before {
     content: "“";
+    color: $secondary;
     font-size: $height;
     margin-right: 5px;
   }

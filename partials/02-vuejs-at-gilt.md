@@ -29,7 +29,7 @@ The new [Gilt+ CLP][1] can be seen as one main component (`PageComposer`) that r
 
 .img-large.center[![CLP](assets/clp.png)]
 
-Multiple Front End Engineers working in parallel with as limited friction as possible; each one worked on a specific component, imported as a dependency in `PageComposer`.
+Multiple Front End Engineers working in parallel with as **limited friction** as possible; each one worked on a specific component, imported as a dependency in `PageComposer`.
 
 ---
 [1]: http://www.gilt.com/men
