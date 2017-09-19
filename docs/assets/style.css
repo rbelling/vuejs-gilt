@@ -58,12 +58,13 @@ body {
   background-image: url("./gilt.svg");
   background-size: cover;
   background-position: center;
-  position: absolute; }
+  position: absolute;
+  filter: drop-shadow(0 0 23px #e09d00);
+  bottom: 22px; }
 
-.footer, .remark-slide-number {
+.remark-slide-number {
   color: #34495C;
-  bottom: 20px;
-  filter: drop-shadow(0 0 23px #e09d00); }
+  bottom: 19px; }
 
 .quote {
   color: #3B8070;

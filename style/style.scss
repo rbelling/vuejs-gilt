@@ -71,11 +71,12 @@ body {
   background-size: cover;
   background-position: center;
   position: absolute;
-}
-.footer, .remark-slide-number {
-  color: $secondary;
-  bottom: 20px;
   filter: drop-shadow(0 0 23px $alert);
+  bottom: 22px;
+}
+.remark-slide-number {
+  color: $secondary;
+  bottom: 19px;
 }
 
 .quote {
