@@ -161,7 +161,7 @@ Centralized **State Management** for Vue.js.
 * Allows **Time Travel** within the App
 * State **Snapshots**
 
-### What happens a Component with no State Management?
+### How Components Manage State 
 * The **state**, which is the source of truth that drives our app
 * The **view**, which is just a declarative mapping of the state
 * The **actions**, which are the possible ways the state could change in reaction to user inputs from the view
