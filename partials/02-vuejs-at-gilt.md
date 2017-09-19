@@ -1,6 +1,6 @@
-# Vue.js at Gilt
+## Vue.js at Gilt
 
-## Web Product Listing
+### Web Product Listing
 
 * Simple Reusable components
 * Data Driven Components
@@ -13,8 +13,7 @@
 * SSR components using Vuex
 
 ---
-
-## Web Category Page
+### Web Category Page
 
 The new [Gilt+ CLP][1] can be seen as one main component (`PageComposer`) that renders a list of children (carousel, mosaic, ...). This list is a simple array of IDs that is returned by the back end. It's almost like a CMS.
 

@@ -1,7 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 body {
-  font-family: 'Droid Serif', Arial, sans-serif; }
+  font-family: 'Droid Serif', Arial, sans-serif;
+  color: #34495C; }
 
 .remark-code, .remark-inline-code {
   font-family: 'Ubuntu Mono', monospace; }
@@ -17,22 +18,46 @@ body {
 
 .remark-slide-content p, .remark-slide-content li {
   font-size: 18px;
-  line-height: 1.4; }
+  line-height: 1.4;
+  letter-spacing: 0.1px; }
+
+.remark-slide-content h1, .remark-slide-content h2 {
+  color: #41B883; }
+
+.remark-slide-content h3, .remark-slide-content h4, .remark-slide-content h5 {
+  color: #3B8070; }
+
+.remark-slide-content a {
+  color: #34495C;
+  text-decoration: none !important;
+  font-weight: bold; }
+
+.remark-slide-content a, .remark-slide-content strong {
+  color: #FDB500;
+  filter: drop-shadow(0 0 25px #3B8070); }
 
 .img-large > img {
-  margin-top: 10px;
-  max-width: 450px; }
+  margin: 10px 0;
+  max-width: 430px; }
+
+.img-hero > img {
+  max-width: 650px; }
 
 .authors {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  margin-top: 20px; }
+  margin-top: 20px;
+  font-size: 21px;
+  letter-spacing: 1.2px; }
 
-.logo {
-  position: fixed;
-  width: 119px;
-  height: 25px;
-  background-image: url("./logo.svg");
+.footer {
+  width: 80px;
+  height: 17px;
+  background-image: url("./gilt.svg");
   background-size: cover;
-  background-position: center; }
+  background-position: center;
+  position: absolute; }
+
+.footer, .remark-slide-number {
+  bottom: 20px; }

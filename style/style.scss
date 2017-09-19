@@ -1,8 +1,14 @@
+$primary: #3B8070;
+$primary-alt: #41B883;
+$secondary: #34495C;
+$alert: #FDB500;
+
 @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
 body {
   font-family: 'Droid Serif', Arial, sans-serif;
+  color: $secondary;
 }
 
 .remark-code, .remark-inline-code {
@@ -22,12 +28,31 @@ body {
   p, li {
     font-size: 18px;
     line-height: 1.4;
+    letter-spacing: 0.1px;
+  }
+  h1, h2 {
+    color: $primary-alt;
+  }
+  h3, h4, h5 {
+    color: $primary;
+  }
+  a {
+    color: $secondary;
+    text-decoration: none !important;
+    font-weight: bold;
+  }
+  a, strong {
+    color: $alert;
+    filter: drop-shadow(0 0 25px $primary);
   }
 }
 
 .img-large > img {
-  margin-top: 10px;
-  max-width: 450px;
+  margin: 10px 0;
+  max-width: 430px;
+}
+.img-hero > img {
+  max-width: 650px;
 }
 
 .authors {
@@ -35,13 +60,18 @@ body {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
+  font-size: 21px;
+  letter-spacing: 1.2px;
 }
 
-.logo {
-  position: fixed;
-  width: 119px;
-  height: 25px;
-  background-image: url('./logo.svg');
+.footer {
+  width: 80px;
+  height: 17px;
+  background-image: url('./gilt.svg');
   background-size: cover;
   background-position: center;
+  position: absolute;
+}
+.footer, .remark-slide-number {
+  bottom: 20px;
 }

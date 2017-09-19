@@ -75,11 +75,9 @@ In React you'd declare this in `getInitialState()`.
 ```javascript
 new Vue({
   el: '#example',
-  data: {
-    a: 1, b: 2
-  },
+  data: { a: 1, b: 2 },
   computed: {
-*    sum() { return this.a + this.b }
+    sum() { return this.a + this.b }
 ```
 
 ```html
@@ -92,7 +90,7 @@ If one of the two addends is changed, what should we do to re-render the UI?
 
 *Nothing*.
 
-`sum` depends on `a` and `b`. Whenever either of those is updated, `sum` will be computed accordingly.
+`sum` depends on `a` and `b`. Whenever either of those is updated, `sum` will be re-computed.
 At startup time, Vue converts all of the properties in `data`, and transforms them in getters/setters, making them reactive.
 When you set `a` or `b` to something else, the rendered HTML updates automatically.
 
@@ -127,7 +125,7 @@ const App = new Vue({
 [//]: # (https://codepen.io/rbelling/pen/wraxdg)
 
 ---
-###Single File `.vue` Components 
+##Single File `.vue` Components 
 ####`template`, `style` and `script` in a single file, similar to `CustomElement` spec.
 
 ```html

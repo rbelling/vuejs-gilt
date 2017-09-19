@@ -1,37 +1,64 @@
-.center[#Easier done than said: Vue.js]
+class: center
+count: false
+#Easier done than said: Vue.js
+
 .img-large.center[![Vue.js Badge](assets/vue-badge.png)]
-.authors[[Alan Fitzpatrick](afitzpatrick@gilt.com) [Riccardo Bellingeri](rbellingeri@gilt.com)]
+.authors[[Alan FITZPATRICK](afitzpatrick@gilt.com) [Riccardo BELLINGERI](rbellingeri@gilt.com)]
+
 ---
+name: default-slide
+layout: true
+
+.footer[]
+
+---
+
 ##TL;DR
 **The good parts of Angular, plus the good parts of React**
 
 Vue.js is a library that makes it very easy to build Web UI. It's a set of tools that work together really well, rather than a full-featured monolithic framework.
-Its design is inspired by the [MVVM pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvvm), where Vue represents the VM part of it.
+Good for:
 
-Use cases: Vue allows you to create everything from
-- small widgets that you drop in existing applications
-- medium sized apps where certain parts of the page are controlled with js, re-rendering certain parts of the app dynamically 
-- larger enterprise apps (SPAs)
+- Small widgets, that you drop in existing applications
+- Medium sized apps, where certain parts are controlled with JS (dynamic re-rendering) 
+- Larger enterprise apps (SPAs)
+
+```html
+<script src="https://unpkg.com/vue"></script>
+<div id="app">
+  <p>{{ message }}</p>
+</div>
+```
+```javascript
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue.js!'
+  }
+})
+```
 ---
+
 ##How does Vue compares to Angular / React?
-Those three frameworks really do work well for like 80% of the common use cases, but then they each have their specialty, some problems they solve better than the others.
+They all really do work well for maybe 80% of the common use cases. They each have their own specialty, some problems they solve better than the others.
 
 Vue shines in the framework landscape as: 
-- Extremely small, the core is just 16kb min+gzip 
-- It's very fast at runtime, and beats React or Angular in [some cases](https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts/table.html)
-- Lets you add complex features to its core, like Vue Router and so on. It is considered a Progressive framework because of its modularity.
-- Easier to migrate legacy code then with React / Angular
+- Extremely small: core is 16kb (min+gzip) 
+- Very fast at runtime, and beats React or Angular in [some cases](https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts/table.html)
+- **Progressive framework**: complex features can be added to its core (modularity)
+- Easier to migrate legacy code than with React / Angular
 
-Certainly it's not suited for all use cases. It's aimed at the Web, so for example if you need something like React Native, Vue probably wouldn't be your first choice, although there are projects like [Weex](https://weex.apache.org/), backed by AliBaba, that aims at filling that gap.
+Certainly it's not suited for all use cases. It's aimed at the Web, so if you need something like React Native, Vue probably wouldn't be your first choice, although there are projects like [Weex](https://weex.apache.org/), backed by AliBaba, that aims at filling that gap.
+
 
 ---
 
 [blogpost]: (http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/)
 [jsjabber]: (https://devchat.tv/js-jabber/187-jsj-vue-js-with-evan-you)
 
-# Vue.js at Gilt
+## Vue.js at Gilt
 
-## Web Product Listing
+### Web Product Listing
 
 * Simple Reusable components
 * Data Driven Components
@@ -44,8 +71,7 @@ Certainly it's not suited for all use cases. It's aimed at the Web, so for examp
 * SSR components using Vuex
 
 ---
-
-## Web Category Page
+### Web Category Page
 
 The new [Gilt+ CLP][1] can be seen as one main component (`PageComposer`) that renders a list of children (carousel, mosaic, ...). This list is a simple array of IDs that is returned by the back end. It's almost like a CMS.
 
@@ -135,11 +161,9 @@ In React you'd declare this in `getInitialState()`.
 ```javascript
 new Vue({
   el: '#example',
-  data: {
-    a: 1, b: 2
-  },
+  data: { a: 1, b: 2 },
   computed: {
-*    sum() { return this.a + this.b }
+    sum() { return this.a + this.b }
 ```
 
 ```html
@@ -152,7 +176,7 @@ If one of the two addends is changed, what should we do to re-render the UI?
 
 *Nothing*.
 
-`sum` depends on `a` and `b`. Whenever either of those is updated, `sum` will be computed accordingly.
+`sum` depends on `a` and `b`. Whenever either of those is updated, `sum` will be re-computed.
 At startup time, Vue converts all of the properties in `data`, and transforms them in getters/setters, making them reactive.
 When you set `a` or `b` to something else, the rendered HTML updates automatically.
 
@@ -187,7 +211,7 @@ const App = new Vue({
 [//]: # (https://codepen.io/rbelling/pen/wraxdg)
 
 ---
-###Single File `.vue` Components 
+##Single File `.vue` Components 
 ####`template`, `style` and `script` in a single file, similar to `CustomElement` spec.
 
 ```html
@@ -342,7 +366,7 @@ src
 
 ---
 
-# Vue.js community
+## Vue.js community
 
 Created by **Evan You** (former Creative Technologist at Google Creative Lab). 
 Vue started as a personal project, to solve common challenges in the creative development, like the need for tools that make it quick to prototype, and creating highly interactive content.
@@ -359,10 +383,19 @@ It isn't backed by a huge corp, like React, but:
 
 ---
 
-# Adoption
+### Adoption
 67k stars on GitHub
-@todo find a few logos here
-Big players that use Vue (alibaba, optimizely)
+
+* Alibaba
+* Baidu
+* Weibo
+* Optimizely
+* Expedia
+* Nintendo
+* Sainsbury's
+* GitLab
+* Laravel Spark
+* Laracasts
 
 ---
 
@@ -382,14 +415,10 @@ The idea of a marketplace for trusted plugins is certainly not new: it would be 
 
 [issues]: https://github.com/vuejs/vue/issues
 [stability]: http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/#Stability
-## Thank you for listening ;)
+name: thank-you
+class: center
+count: false
+layout: false
 
-
-@todo add https://codepen.io/alexchopin/pen/jBWrej
-
-
-##References
-
-Call out to who helped, and so on
-
-[Vue.js Udemy course](https://www.udemy.com/vuejs-2-the-complete-guide/learn/v4/t/lecture/5940912?start=0)
+#Thank you!
+.img-hero.center.middle[![Vue.js Logo](assets/painting.jpg)]

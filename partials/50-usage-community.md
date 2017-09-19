@@ -1,4 +1,4 @@
-# Vue.js community
+## Vue.js community
 
 Created by **Evan You** (former Creative Technologist at Google Creative Lab). 
 Vue started as a personal project, to solve common challenges in the creative development, like the need for tools that make it quick to prototype, and creating highly interactive content.
@@ -15,10 +15,19 @@ It isn't backed by a huge corp, like React, but:
 
 ---
 
-# Adoption
+### Adoption
 67k stars on GitHub
-@todo find a few logos here
-Big players that use Vue (alibaba, optimizely)
+
+* Alibaba
+* Baidu
+* Weibo
+* Optimizely
+* Expedia
+* Nintendo
+* Sainsbury's
+* GitLab
+* Laravel Spark
+* Laracasts
 
 ---
 
