@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 body {
@@ -22,10 +23,10 @@ body {
   letter-spacing: 0.1px; }
 
 .remark-slide-content h1, .remark-slide-content h2 {
-  color: #41B883; }
+  color: #3B8070; }
 
 .remark-slide-content h3, .remark-slide-content h4, .remark-slide-content h5 {
-  color: #3B8070; }
+  color: #41B883; }
 
 .remark-slide-content a {
   color: #34495C;
@@ -33,12 +34,12 @@ body {
   font-weight: bold; }
 
 .remark-slide-content a, .remark-slide-content strong {
-  color: #FDB500;
-  filter: drop-shadow(0 0 25px #3B8070); }
+  color: #e09d00; }
 
 .img-large > img {
   margin: 10px 0;
-  max-width: 430px; }
+  max-width: 430px;
+  max-height: 50vh; }
 
 .img-hero > img {
   max-width: 650px; }
@@ -60,4 +61,17 @@ body {
   position: absolute; }
 
 .footer, .remark-slide-number {
-  bottom: 20px; }
+  color: #34495C;
+  bottom: 20px;
+  filter: drop-shadow(0 0 23px #e09d00); }
+
+.quote {
+  color: #3B8070;
+  margin-left: 60px;
+  display: flex;
+  align-items: center;
+  font-size: 22px; }
+  .quote:before {
+    content: "“";
+    font-size: 60px;
+    margin-right: 5px; }

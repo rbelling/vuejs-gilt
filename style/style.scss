@@ -1,7 +1,7 @@
 $primary: #3B8070;
 $primary-alt: #41B883;
 $secondary: #34495C;
-$alert: #FDB500;
+$alert: #e09d00;
 
 @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
@@ -31,10 +31,10 @@ body {
     letter-spacing: 0.1px;
   }
   h1, h2 {
-    color: $primary-alt;
+    color: $primary;
   }
   h3, h4, h5 {
-    color: $primary;
+    color: $primary-alt;
   }
   a {
     color: $secondary;
@@ -43,13 +43,13 @@ body {
   }
   a, strong {
     color: $alert;
-    filter: drop-shadow(0 0 25px $primary);
   }
 }
 
 .img-large > img {
   margin: 10px 0;
   max-width: 430px;
+  max-height: 50vh;
 }
 .img-hero > img {
   max-width: 650px;
@@ -73,5 +73,21 @@ body {
   position: absolute;
 }
 .footer, .remark-slide-number {
+  color: $secondary;
   bottom: 20px;
+  filter: drop-shadow(0 0 23px $alert);
+}
+
+.quote {
+  $height: 60px;
+  color: $primary;
+  margin-left: $height;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  &:before {
+    content: "“";
+    font-size: $height;
+    margin-right: 5px;
+  }
 }

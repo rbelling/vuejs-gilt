@@ -20,37 +20,33 @@ Hello Vue.js!
 ```
 ---
 
-##Progressive Framework  
-It's called progressive because the core of Vue is minimal and extremely modular.
-You can get the Runtime-only build, or Compiler + Runtime if you need to compile JS templates on the client.
-
-You could even choose to add Vue merely as a jQuery replacement, (the runtime itself is smaller than jQuery when minified + gzipped).
-If you decide to add more complex features to your app, like the Router, Vuex and so on, you can certainly do so, but by default is much less bloated then other frameworks.
-
-You can have Vue controlling only certain parts of your app, which comes in handy when migrating a legacy codebase to Vue.
-This makes it easy to apply the strangler pattern.
-
----
 ##Virtual Dom
-Vue's virtual dom is an intermediate representation of the DOM tree, that only exists in memory. Whenever there's a change to one of the properties Vue maintains a buffer of diffs, that are then de-duped, transformed into a patch, and applied to the real DOM (so-called Reconciliation)
+Intermediate representation of the DOM tree, that only exists in memory. Whenever there's a change to one of the properties, Vue: 
+* caches the changes (`nextTick`)
+* de-dupes them, applies them as a *patch*
+* reconciles virtual and real DOM
 
-Vue relies on a really fast virtual dom implementation, which offers similar performances to React (even faster at times).
+There are a few key differences with React's implementation:
+In React when a component's state changes, it triggers the re-render of the whole sub-tree.
+To avoid unnecessary re-renders of child components, you need to implement `shouldComponentUpdate()`, or use `PureComponent`s.
+You may also need to use immutable data structures to optimize.
 
-There are a few key differences that is worth noting.
-In React when a component's state changes, it triggers the re-render of the entire component sub-tree, starting from that component as a root.
-To avoid unnecessary re-renders of child components, you need to either use [PureComponent](https://facebook.github.io/react/docs/react-api.html#react.purecomponent) or implement `shouldComponentUpdate()` whenever you can.
-You may also need to use immutable data structures to make your state changes more optimized.
+In Vue, a component's dependencies are automatically tracked during its render. 
+The system knows precisely which components actually need to re-render when state changes. 
+Each component can be considered to have `shouldComponentUpdate()` automatically implemented for you, without the nested component caveats.
 
-In Vue, a component's dependencies are automatically tracked during its render, so the system knows precisely which components actually need to re-render when state changes. Each component can be considered to have shouldComponentUpdate automatically implemented for you, without the nested component caveats.
-Overall this removes the need for a whole class of performance optimizations from the developer's plate, and allows them to focus more on building the app itself as it scales.
+Overall this removes the need for a whole class of **performance optimizations** from the developer's plate.
 
 ---
 
 ##Directives
 Vue offers various directives, heavily inspired by the Angular world.
-A directive is a special attribute that you can add to a template. Some examples are `v-for`, `v-on (@eventName)`, `v-if`,
+A directive is a special attribute that you can add to a template. 
 
-Directives make it really straight forward to add event listeners.
+Some of them come out of the box: `v-for`, `v-on`, `v-if`, `v-once` and others.
+You can create custom ones if needed. 
+
+Directives make it really straight forward to add event listeners, modifiers, `preventDefault`, `stopPropagation` and so on.
 
 ```javascript
 new Vue({
@@ -88,15 +84,14 @@ new Vue({
 
 If one of the two addends is changed, what should we do to re-render the UI?  
 
-*Nothing*.
+.quote[Nothing!]
 
 `sum` depends on `a` and `b`. Whenever either of those is updated, `sum` will be re-computed.
-At startup time, Vue converts all of the properties in `data`, and transforms them in getters/setters, making them reactive.
-When you set `a` or `b` to something else, the rendered HTML updates automatically.
+
+[//]: # (At startup time, Vue converts all of the properties in `data`, and transforms them in getters/setters, making them reactive.)
+[//]: # (When you set `a` or `b` to something else, the rendered HTML updates automatically.)
 
 There's no need to call `setState()`, or listening to store events, or anything else.
-
-[//]: # (https://codepen.io/rbelling/pen/QqwPGY)
 
 ---
 
@@ -130,9 +125,8 @@ const App = new Vue({
 
 ```html
 <style lang="scss" scoped>
-  $copy-color: #737373;
   .rotd {
-    color: $copy-color;
+    color: transparentize(teal, 50%);
   }
 </style>
 
@@ -150,8 +144,7 @@ const App = new Vue({
 ```
 * Micro-service friendly, reduced friction
 * Any CSS pre-processor & template engine
-* CSS `scoped` means no side effects
-* Designers can author CSS normally (no css-in-js)
+* CSS `scoped` means no side effects. Designers can author CSS normally (no css-in-js)
 * HotReloading with `webpack` & `vue-loader` 
 
 ---
@@ -198,6 +191,7 @@ Centralized State Management for Vue.js.
 * Any component can access state and trigger actions from anywhere
 
 .img-large.center[![Vuex dataflow](https://vuex.vuejs.org/en/images/vuex.png)]
+
 ---
 
 ```javascript
@@ -239,7 +233,7 @@ It is possible to render components into HTML strings on the server, send them d
 
 A server-rendered Vue.js app can also be considered "isomorphic" or "universal", in the sense that the majority of your app's code runs on both the server and the client.
 
-.img-large.center[![Vue SSR](https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png)]
+.img-hero.center[![Vue SSR](https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png)]
 
 ---
 
@@ -277,5 +271,3 @@ src
 ```
 
 * Mounting of the Vue app is only done within the entry-client
-
----

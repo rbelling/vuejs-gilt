@@ -15,12 +15,15 @@
 ---
 ### Web Category Page
 
-The new [Gilt+ CLP][1] can be seen as one main component (`PageComposer`) that renders a list of children (carousel, mosaic, ...). This list is a simple array of IDs that is returned by the back end. It's almost like a CMS.
+[//]: # (This list is a simple array of IDs that is returned by the back end. It's almost like a CMS.)
+[//]: # (Vue was easy to pick up comparing to other solutions out there, so we'll be able to easily add new developers to the project, maintenance will be easier.)
+[//]: # (Supports Single File Components, which is aligned to the spec of WebComponents. We found that those suited our needs perfectly.)
 
-We needed to allow a team of multiple Front End developers to work in parallel with as limited friction as we could; each component is published to NPM and imported as a dependency in `PageComposer`.
+The new [Gilt+ CLP][1] can be seen as one main component (`PageComposer`) that renders a list of children (mosaic, carousel, ...).
 
-Vue was easy to pick up comparing to other solutions out there, so we'll be able to easily add new developers to the project, maintenance will be easier.
-supports Single File Components, which is aligned to the spec of WebComponents. We found that those suited our needs perfectly.
+.img-large.center[![CLP](assets/clp.png)]
+
+Multiple Front End Engineers working in parallel with as limited friction as possible; each one worked on a specific component, imported as a dependency in `PageComposer`.
 
 ---
 [1]: http://www.gilt.com/men
