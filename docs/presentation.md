@@ -96,15 +96,21 @@ It isn't backed by a huge corp, like React, but:
 
 ### Web Product Listing
 
-* Simple Reusable components
-* Data Driven Components
-* Removing Event Bus
-* Single Source of Truth
-* Vuex - State Management
-  * Data Collection
-  * Data Transformation
-  * State Control and Flow
-* SSR components using Vuex
+* Goals
+  * Best Sellers (Initially)
+  * Sales Listing
+  * Web Search
+
+* Requirements
+  * Simple **Reusable components**
+  * Data Driven Components
+  * Removing Event Bus
+  * **Single Source of Truth**
+  * Vuex - State Management
+    * Data Collection
+    * Data Transformation
+    * State Control and Flow
+  * SSR components using Vuex
 
 ---
 ### Web Category Page
@@ -146,7 +152,7 @@ Hello Vue.js!
 ---
 
 ##Virtual Dom
-Intermediate representation of the DOM tree, that only exists in memory. Whenever there's a change to one of the properties, Vue: 
+Intermediate representation of the DOM tree, that only exists in memory. Whenever there's a change to one of the properties, Vue:
 * caches the changes (`nextTick`)
 * de-dupes them, applies them as a *patch*
 * reconciles virtual and real DOM
@@ -156,8 +162,8 @@ In React when a component's state changes, it triggers the re-render of the whol
 To avoid unnecessary re-renders of child components, you need to implement `shouldComponentUpdate()`, or use `PureComponent`s.
 You may also need to use immutable data structures to optimize.
 
-In Vue, a component's dependencies are automatically tracked during its render. 
-The system knows precisely which components actually need to re-render when state changes. 
+In Vue, a component's dependencies are automatically tracked during its render.
+The system knows precisely which components actually need to re-render when state changes.
 Each component can be considered to have `shouldComponentUpdate()` automatically implemented for you, without the nested component caveats.
 
 Overall this removes the need for a whole class of **performance optimizations** from the developer's plate.
@@ -166,10 +172,10 @@ Overall this removes the need for a whole class of **performance optimizations**
 
 ##Directives
 Vue offers various directives, heavily inspired by the Angular world.
-A directive is a special attribute that you can add to a template. 
+A directive is a special attribute that you can add to a template.
 
 Some of them come out of the box: `v-for`, `v-on`, `v-if`, `v-once` and others.
-You can create custom ones if needed. 
+You can create custom ones if needed.
 
 Directives make it really straight forward to add event listeners, modifiers, `preventDefault`, `stopPropagation` and so on.
 
@@ -190,7 +196,7 @@ new Vue({
 
 ---
 ##Reactivity model
-The state of a Vue component is stored into a POJO called `data`. 
+The state of a Vue component is stored into a POJO called `data`.
 In React you'd declare this in `getInitialState()`.  
 
 ```javascript
@@ -236,7 +242,7 @@ const App = new Vue({
   components: {
     MyExample
   },
-  template: 
+  template:
     `<div>
       Now we'll add a custom component.
 *     <my-example/>
@@ -245,7 +251,7 @@ const App = new Vue({
 [//]: # (https://codepen.io/rbelling/pen/wraxdg)
 
 ---
-##Single File `.vue` Components 
+##Single File `.vue` Components
 ####`template`, `style` and `script` in a single file, similar to `CustomElement` spec.
 
 ```html
@@ -270,41 +276,47 @@ const App = new Vue({
 * Micro-service friendly, reduced friction
 * Any CSS pre-processor & template engine
 * CSS `scoped` means no side effects. Designers can author CSS normally (no css-in-js)
-* HotReloading with `webpack` & `vue-loader` 
+* HotReloading with `webpack` & `vue-loader`
 
 ---
 
 ## Vuex
-Centralized State Management for Vue.js.
+
+### What is it?
+Centralized **State Management** for Vue.js.
 
 * Vuex allows all state to be controlled from one central location
-* Allows for a single source of Truth
-* Mutations can only occur in a predictable fashion
-* Integrates with the standard Vue Dev Tools
-* Allows Time Travel within the App
-* State Snapshots
+* Allows for a **single source of Truth**
+* Mutations can only occur in a **predictable** fashion
+* Integrates with the standard Vue **Dev Tools**
+* Allows **Time Travel** within the App
+* State **Snapshots**
 
-### One Way Data Flow In a Component
-* The state, which is the source of truth that drives our app;
-* The view, which is just a declarative mapping of the state;
-* The actions, which are the possible ways the state could change in reaction to user inputs from the view.
+### What happens a Component with no State Management?
+* The **state**, which is the source of truth that drives our app
+* The **view**, which is just a declarative mapping of the state
+* The **actions**, which are the possible ways the state could change in reaction to user inputs from the view
 
 ---
 
 .img-large.center[![One Way Flow](https://vuex.vuejs.org/en/images/flow.png)]
 
+.quote[This simplicity quickly breaks down when we have multiple components that share common state:]
+
 ---
 
 ### Issues that can occur
-* Multiple views may depend on the same piece of state.
+* Multiple views may **depend on the same piece of state**.
 * Actions from different views may need to mutate the same piece of state.
-* Updating and keeping multiple components in sync can be tedious and hard on the app
+* Updating and keeping **multiple components in sync** can be tedious and hard on the app
 
 .img-large.center[![Component Provider Bus](https://i.imgur.com/sZ3CZTx.png)]
 
 ---
 
 .img-large.center[![Component Provider Bus Mess](https://i.imgur.com/Xm10t7F.png)]
+
+.quote[So why don't we extract the shared state out of the components, and manage it in a global singleton?]
 
 .img-large.center[![Vuex Fix](https://i.imgur.com/zqmhD88.png)]
 
@@ -324,7 +336,7 @@ const store = new Vuex.Store({
   state: {
     count: 0
   },
-  mutations: {
+* mutations: {
     increment (state) {
       state.count++
     }
@@ -339,10 +351,10 @@ console.log(store.state.count) // -> 1
 ```
 ├── index.html
 ├── main.js
-├── components
+*├── components
 │   ├── App.vue
 │   └── ...
-└── store
+*└── store
     ├── index.js          # where we assemble modules and export the store
     ├── actions.js        # root actions
     ├── mutations.js      # root mutations
@@ -354,25 +366,28 @@ console.log(store.state.count) // -> 1
 ---
 
 ## SSR
-It is possible to render components into HTML strings on the server, send them directly to the browser, and finally "hydrate" the static markup into a fully interactive app on the client.
+It is possible to **render components into HTML strings on the server**, send them directly to the browser, and finally **"hydrate"** the static markup into a fully interactive app on the client.
 
-A server-rendered Vue.js app can also be considered "isomorphic" or "universal", in the sense that the majority of your app's code runs on both the server and the client.
+A server-rendered Vue.js app can also be considered "isomorphic" or **"universal"**, in the sense that the majority of your app's code runs on both the server and the client.
 
 .img-hero.center[![Vue SSR](https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png)]
 
 ---
 
-### Why ?
+### Why
 .img-large.center[![Vue SSR](https://i.ytimg.com/vi/gCV3MD-szvc/maxresdefault.jpg)]
-* Better SEO
-* Faster Time to Content
-* More Work done server side
+* Better **SEO**
+* **Faster** Time to Content
+* **Universal** code rendering
 
 ---
 
 ### How easy is it to configure ?
-* Easily setup as part of the build process
-* Constraints in terms of lifecycle hooks
+* Setup as part of the **Webpack** build process
+* Tools are already built and maintained by the core team
+
+### Any Constraints
+* Lifecycle hooks
 
 .img-large.center[![Vue Hyrdration](https://i.stack.imgur.com/RwJaZ.png)]
 
@@ -390,9 +405,9 @@ src
 │   ├── Bar.vue
 │   └── Baz.vue
 ├── App.vue
-├── app.js # universal entry
-├── entry-client.js # runs in browser only
-└── entry-server.js # runs on server only
+*├── app.js # universal entry
+*├── entry-client.js # runs in browser only
+*└── entry-server.js # runs on server only
 ```
 
 * Mounting of the Vue app is only done within the entry-client

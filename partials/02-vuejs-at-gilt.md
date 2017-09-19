@@ -2,15 +2,21 @@
 
 ### Web Product Listing
 
-* Simple Reusable components
-* Data Driven Components
-* Removing Event Bus
-* Single Source of Truth
-* Vuex - State Management
-  * Data Collection
-  * Data Transformation
-  * State Control and Flow
-* SSR components using Vuex
+* Goals
+  * Best Sellers (Initially)
+  * Sales Listing
+  * Web Search
+
+* Requirements
+  * Simple **Reusable components**
+  * Data Driven Components
+  * Removing Event Bus
+  * **Single Source of Truth**
+  * Vuex - State Management
+    * Data Collection
+    * Data Transformation
+    * State Control and Flow
+  * SSR components using Vuex
 
 ---
 ### Web Category Page
